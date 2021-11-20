@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 public class LaptopEntity extends BaseEntity{
 
     private String model;
-    private String processor;
+    private ProcessorEntity processor;
+    private VideoCardEntity videoCard;
     private Double price;
-    private String videoCard;
     private String memory;
     private String hardDisk;
     private String display;
     private String color;
-    private LocalDateTime create;
+    private LocalDateTime createOn;
     private DeviceTypeEnum type;
     private UserEntity user;
 
@@ -33,15 +33,6 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
-    public String getProcessor() {
-        return processor;
-    }
-
-    public LaptopEntity setProcessor(String processor) {
-        this.processor = processor;
-        return this;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -51,11 +42,12 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
-    public String getVideoCard() {
+    @OneToOne
+    public VideoCardEntity getVideoCard() {
         return videoCard;
     }
 
-    public LaptopEntity setVideoCard(String videoCard) {
+    public LaptopEntity setVideoCard(VideoCardEntity videoCard) {
         this.videoCard = videoCard;
         return this;
     }
@@ -116,4 +108,22 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
+    @OneToOne
+    public ProcessorEntity getProcessor() {
+        return processor;
+    }
+
+    public LaptopEntity setProcessor(ProcessorEntity processor) {
+        this.processor = processor;
+        return this;
+    }
+
+    public LocalDateTime getCreateOn() {
+        return createOn;
+    }
+
+    public LaptopEntity setCreateOn(LocalDateTime createOn) {
+        this.createOn = createOn;
+        return this;
+    }
 }

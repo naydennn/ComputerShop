@@ -10,4 +10,9 @@ public class LaptopController {
     public String allLaptops() {
         return "laptops";
     }
+
+    @GetMapping("/add/laptop")
+    public String addLaptop() {
+        return "add-laptop";
+    }
 }

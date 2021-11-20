@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 public class ComputerEntity extends BaseEntity {
 
     private String model;
-    private String processor;
+    private ProcessorEntity processor;
+    private VideoCardEntity videoCard;
     private Double price;
-    private String videoCard;
     private String memory;
     private String storage;
     private String motherboard;
@@ -36,16 +36,6 @@ public class ComputerEntity extends BaseEntity {
     }
 
     @Column(nullable = false)
-    public String getProcessor() {
-        return processor;
-    }
-
-    public ComputerEntity setProcessor(String processor) {
-        this.processor = processor;
-        return this;
-    }
-
-    @Column(nullable = false)
     public Double getPrice() {
         return price;
     }
@@ -55,11 +45,12 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    public String getVideoCard() {
+    @OneToOne
+    public VideoCardEntity getVideoCard() {
         return videoCard;
     }
 
-    public ComputerEntity setVideoCard(String videoCard) {
+    public ComputerEntity setVideoCard(VideoCardEntity videoCard) {
         this.videoCard = videoCard;
         return this;
     }
@@ -140,6 +131,16 @@ public class ComputerEntity extends BaseEntity {
 
     public ComputerEntity setUser(UserEntity user) {
         this.user = user;
+        return this;
+    }
+
+    @OneToOne
+    public ProcessorEntity getProcessor() {
+        return processor;
+    }
+
+    public ComputerEntity setProcessor(ProcessorEntity processor) {
+        this.processor = processor;
         return this;
     }
 }

@@ -10,4 +10,9 @@ public class ComputerController {
     public String allComputers() {
         return "computers";
     }
+
+    @GetMapping("/add/computer")
+    public String addComputer() {
+        return "add-computer";
+    }
 }

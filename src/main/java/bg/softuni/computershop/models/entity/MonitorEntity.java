@@ -12,7 +12,7 @@ public class MonitorEntity extends BaseEntity {
 
     private String model;
     private String screen;
-    private String resolutions;
+    private String resolution;
     private String connectionType;
     private String description;
     private Double price;
@@ -42,12 +42,12 @@ public class MonitorEntity extends BaseEntity {
     }
 
     @Column(nullable = false)
-    public String getResolutions() {
-        return resolutions;
+    public String getResolution() {
+        return resolution;
     }
 
-    public MonitorEntity setResolutions(String resolutions) {
-        this.resolutions = resolutions;
+    public MonitorEntity setResolution(String resolutions) {
+        this.resolution = resolutions;
         return this;
     }
 
