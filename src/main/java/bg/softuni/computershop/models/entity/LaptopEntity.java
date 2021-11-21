@@ -20,6 +20,7 @@ public class LaptopEntity extends BaseEntity{
     private LocalDateTime createOn;
     private DeviceTypeEnum type;
     private UserEntity user;
+    // add picture
 
     public LaptopEntity() {
     }

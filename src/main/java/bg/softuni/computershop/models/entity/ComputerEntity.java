@@ -21,6 +21,7 @@ public class ComputerEntity extends BaseEntity {
     private LocalDateTime created;
     private DeviceTypeEnum type;
     private UserEntity user;
+    //add picture
 
     public ComputerEntity() {
     }

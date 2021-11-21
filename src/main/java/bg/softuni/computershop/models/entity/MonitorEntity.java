@@ -1,10 +1,10 @@
 package bg.softuni.computershop.models.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "monitors")
@@ -13,11 +13,12 @@ public class MonitorEntity extends BaseEntity {
     private String model;
     private String screen;
     private String resolution;
-    private String connectionType;
-    private String description;
+    private List<ConnectionTypeEnum> connectionType;
     private Double price;
+    private String description;
     private LocalDateTime created;
     private UserEntity user;
+    //add picture
 
     public MonitorEntity() {
     }
@@ -51,12 +52,15 @@ public class MonitorEntity extends BaseEntity {
         return this;
     }
 
-    @Column(nullable = false)
-    public String getConnectionType() {
+    @ElementCollection(targetClass = ConnectionTypeEnum.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "connections_types")
+    @Column(name = "connections")
+    public List<ConnectionTypeEnum> getConnectionType() {
         return connectionType;
     }
 
-    public MonitorEntity setConnectionType(String connectionType) {
+    public MonitorEntity setConnectionType(List<ConnectionTypeEnum> connectionType) {
         this.connectionType = connectionType;
         return this;
     }
