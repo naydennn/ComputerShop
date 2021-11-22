@@ -1,12 +1,6 @@
-package bg.softuni.computershop.models.entity;
+package bg.softuni.computershop.models.service;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-
-@Entity
-@Table(name = "users")
-public class UserEntity extends BaseEntity {
+public class UserRegisterServiceModel {
 
     private String username;
     private String firstName;
@@ -15,47 +9,42 @@ public class UserEntity extends BaseEntity {
     private String phoneNumber;
     private String password;
     private Double money;
-    private Set<UserRoleEntity> roles = new HashSet<>();
 
-    public UserEntity() {
+    public UserRegisterServiceModel() {
     }
 
-    @Column(nullable = false, unique = true)
     public String getUsername() {
         return username;
     }
 
-    public UserEntity setUsername(String username) {
+    public UserRegisterServiceModel setUsername(String username) {
         this.username = username;
         return this;
     }
 
-    @Column(nullable = false)
     public String getFirstName() {
         return firstName;
     }
 
-    public UserEntity setFirstName(String firstName) {
+    public UserRegisterServiceModel setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
 
-    @Column(nullable = false)
     public String getLastName() {
         return lastName;
     }
 
-    public UserEntity setLastName(String lastName) {
+    public UserRegisterServiceModel setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
 
-    @Column(nullable = false)
     public String getEmail() {
         return email;
     }
 
-    public UserEntity setEmail(String email) {
+    public UserRegisterServiceModel setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -64,28 +53,17 @@ public class UserEntity extends BaseEntity {
         return phoneNumber;
     }
 
-    public UserEntity setPhoneNumber(String phoneNumber) {
+    public UserRegisterServiceModel setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
 
-    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
 
-    public UserEntity setPassword(String password) {
+    public UserRegisterServiceModel setPassword(String password) {
         this.password = password;
-        return this;
-    }
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    public Set<UserRoleEntity> getRoles() {
-        return roles;
-    }
-
-    public UserEntity setRoles(Set<UserRoleEntity> roles) {
-        this.roles = roles;
         return this;
     }
 
@@ -93,7 +71,7 @@ public class UserEntity extends BaseEntity {
         return money;
     }
 
-    public UserEntity setMoney(Double money) {
+    public UserRegisterServiceModel setMoney(Double money) {
         this.money = money;
         return this;
     }

@@ -10,79 +10,123 @@
 <header th:replace="fragments/common :: navbar"></header>
 
 
-    <div class="container">
-        <div class="row py-5 mt-4 align-items-center">
-            <div class="col-md-5 col-lg-5 ml-auto text-center">
-                <h1>Create an Account</h1>
-                <img src="/images/viber.jpg" alt="" class="img-fluid">
-            </div>
+<div class="container">
+    <div class="row py-5 mt-4 align-items-center">
+        <div class="col-md-5 col-lg-5 ml-auto text-center">
+            <h1>Create an Account</h1>
+            <img src="/images/viber.jpg" alt="" class="img-fluid">
+        </div>
 
-            <div class="col-md-7 col-lg-6 ml-auto">
-                <form action="#">
-                    <div class="row">
-                        <div class="input-group col-lg-6 mb-4">
-                            <input id="Username" type="text" name="userName" placeholder="Username"
-                                class="form-control bg-white border-left-0 border-md h-100">
-                            <p class="alert-danger px-2 h-100">Field is required</p>
-                        </div>
-                        <div class="input-group col-lg-6 mb-4">
-                            <input id="firstName" type="text" name="firstName" placeholder="First Name"
-                                class="form-control bg-white border-left-0 border-md h-100">
-                            <p class="alert-danger px-2 h-100">Field is required</p>
-                        </div>
-                        <div class="input-group col-lg-6 mb-4">
-                            <input id="lastName" type="text" name="lastname" placeholder="Last Name"
-                                class="form-control bg-white border-left-0 border-md h-100">
-                            <p class="alert-danger px-2 h-100">Field is required</p>
-
-                        </div>
-                        <div class="input-group col-lg-12 mb-4">
-                            <input id="email" type="email" name="email" placeholder="Email Address"
-                                class="form-control bg-white border-left-0 border-md h-100">
-                            <p class="alert-danger px-2 h-100">Field is required</p>
-                        </div>
-                        <div class="input-group col-lg-12 mb-4">
-                            <input id="phoneNumber" type="tel" name="phone" placeholder="Phone Number"
-                                class="form-control bg-white border-md border-left-0 pl-3">
-                        </div>
-                        <div class="input-group col-lg-6 mb-4">
-                            <input id="password" type="password" name="password" placeholder="Password"
-                                class="form-control bg-white border-left-0 border-md h-100">
-                            <p class="alert-danger px-2 h-100">Field is required</p>
-                        </div>
-                        <div class="input-group col-lg-6 mb-4">
-                            <input id="passwordConfirmation" type="text" name="passwordConfirmation"
-                                placeholder="Confirm Password"
-                                class="form-control bg-white border-left-0 border-md h-100">
-                            <p class="alert-danger px-2 h-100">Field is required</p>
-
-                        </div>
-                        <div class="form-group col-lg-12 mx-auto mb-0 text-center">
-                            <a href="#" class="btn btn-primary btn-block py-2">
-                                <span class="font-weight-bold">Create your account</span>
-                            </a>
-                        </div>
-                        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                            <div class="border-bottom w-100 ml-5"></div>
-                            <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                            <div class="border-bottom w-100 mr-5"></div>
-                        </div>
-                        <div class="text-center w-100">
-                            <p class="text-muted font-weight-bold">Already Registered? <a th:href="@{/users/login}"
-                                    class="text-primary ml-2">Login</a></p>
-                        </div>
+        <div class="col-md-7 col-lg-6 ml-auto">
+            <form th:action="@{/users/register}" th:method="post" th:object="${userModel}">
+                <div class="row">
+                    <div class="input-group col-lg-6 mb-4">
+                        <input id="username"
+                               th:field="*{username}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               name="username"
+                               placeholder="Username"
+                               class="form-control bg-white border-left-0 border-md h-100">
+                        <small class="invalid-feedback alert-danger px-2 h-20">
+                            Username name is required and should be between 2 and 20 symbols</small>
+                    </div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <input id="firstName"
+                               th:field="*{firstName}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               name="firstName"
+                               placeholder="First Name"
+                               class="form-control bg-white border-left-0 border-md h-100">
+                        <small class="invalid-feedback alert-danger px-2 h-20">
+                            First name is required and should be more than 1 symbol
+                        </small>
+                    </div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <input id="lastName"
+                               th:field="*{lastName}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               name="lastName"
+                               placeholder="Last Name"
+                               class="form-control bg-white border-left-0 border-md h-100">
+                        <small class="invalid-feedback alert-danger px-2 h-20">
+                            Last name is required and should be more than 1 symbol
+                        </small>
 
                     </div>
-                </form>
-            </div>
+                    <div class="input-group col-lg-12 mb-4">
+                        <input id="email"
+                               th:field="*{email}"
+                               th:errorclass="is-invalid"
+                               type="email"
+                               name="email"
+                               placeholder="Email"
+                               class="form-control bg-white border-left-0 border-md h-100">
+                        <small class="invalid-feedback alert-danger px-2 h-100">Password is required</small>
+
+                    </div>
+                    <div class="input-group col-lg-12 mb-4">
+                        <input id="phoneNumber"
+                               th:field="*{phoneNumber}"
+                               th:errorclass="is-invalid"
+                               type="phoneNumber"
+                               name="phoneNumber"
+                               placeholder="Phone Number(optional)"
+                               class="form-control bg-white border-md border-left-0 pl-3">
+                    </div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <input id="password"
+                               th:field="*{password}"
+                               th:errorclass="is-invalid"
+                               type="password"
+                               name="password"
+                               placeholder="Password"
+                               class="form-control bg-white border-left-0 border-md h-100">
+                        <small class="invalid-feedback alert-danger px-1 h-20">Password is required</small>
+                    </div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <input id="passwordConfirmation"
+                               th:field="*{confirmPassword}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               name="passwordConfirmation"
+                               placeholder="Confirm Password"
+                               class="form-control bg-white border-left-0 border-md h-100">
+                        <p class="invalid-feedback alert-danger px-2 h-20">Confirm password is required</p>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <div class="button-holder d-flex">
+                                <input type="submit" class="btn btn-info btn-lg" value="Create account"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Already Registered? <a th:href="@{/users/login}"
+                                                                                      class="text-primary ml-2">Login</a>
+                        </p>
+                    </div>
+
+                </div>
+            </form>
         </div>
     </div>
-    <footer class="text-center text-white" style="background-color: #17385a;">
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 Copyright:
-            <a class="text-white" href="https://github.com/naydennn">Nayden</a>
-        </div>
-    </footer>
+</div>
+<footer class="text-center text-white" style="background-color: #17385a;">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://github.com/naydennn">Nayden</a>
+    </div>
+</footer>
 </body>
 
 </html>
