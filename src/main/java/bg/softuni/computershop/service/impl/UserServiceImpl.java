@@ -8,6 +8,7 @@ import bg.softuni.computershop.repository.UserRepository;
 import bg.softuni.computershop.repository.UserRoleRepository;
 import bg.softuni.computershop.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,12 +19,19 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
+    private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
+        this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public void init(){
+        initRoles();
     }
 
     @Override
@@ -31,10 +39,10 @@ public class UserServiceImpl implements UserService {
         UserEntity user = modelMapper.map(userRegisterServiceModel, UserEntity.class);
         UserRoleEntity adminRole = userRoleRepository.findByRole(UserRoleEnum.ADMIN);
         UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
-        initRoles();
 
         user.setRoles(Set.of(adminRole, userRole));
         user.setMoney(0.0);
+        user.setPassword(passwordEncoder.encode(userRegisterServiceModel.getPassword()));
 
         userRepository.save(user);
     }

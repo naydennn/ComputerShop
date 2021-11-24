@@ -18,24 +18,31 @@
                             <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                             <p class="text-white-50 mb-5">Please enter your username and password!</p>
 
-                            <div class="form-outline form-white mb-4">
-                                <input type="username" id="typeUsernameX" class="form-control form-control-lg"/>
-                                <small id="usernameHelpInline" class=" bg-danger text-light rounded">
-                                    Username length must be between 3 and 10 characters.
-                                </small>
-                                <label class="form-label" for="typeUsernameX">Username</label>
-                            </div>
+                            <form th:action="@{/users/login}" th:method="post">
+                                <div class="form-outline form-white mb-4">
+                                    <input  th:value="${username}"
+                                            id="username"
+                                            name="username"
+                                            type="text" min="2" max="50"
+                                            class="form-control form-control-lg"
+                                            placeholder="Username"/>
+                                    <label class="form-label" for="username">Username</label>
+                                </div>
 
-                            <div class="form-outline form-white mb-4">
-                                <input type="password" id="typePasswordX" class="form-control form-control-lg"/>
-                                <small id="passwordHelpInline"
-                                       class=" bg-danger text-light rounded">
-                                    Password length must be more than 3 characters.
-                                </small>
-                                <label class="form-label" for="typePasswordX">Password</label>
-                            </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" min="2" max="50"
+                                           id="password"
+                                           name="password"
+                                           placeholder="Password"
+                                           class="form-control form-control-lg"/>
+                                    <label class="form-label" for="password">Password</label>
+                                </div>
 
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                <p th:if="${bad_credentials}" class="errors alert alert-danger">
+                                    Invalid username or password.
+                                </p>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                            </form>
                         </div>
                     </div>
                 </div>
