@@ -7,19 +7,19 @@ import javax.persistence.Table;
 @Table(name = "video_cards")
 public class VideoCardEntity extends BaseEntity {
 
-    private String GPU;
+    private String gpu;
     private Integer memory;
     private String typeOfMemory;
 
     public VideoCardEntity() {
     }
 
-    public String getGPU() {
-        return GPU;
+    public String getGpu() {
+        return gpu;
     }
 
-    public VideoCardEntity setGPU(String GPU) {
-        this.GPU = GPU;
+    public VideoCardEntity setGpu(String GPU) {
+        this.gpu = GPU;
         return this;
     }
 

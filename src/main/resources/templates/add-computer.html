@@ -6,204 +6,274 @@
 <head th:replace="/fragments/common :: head"></head>
 
 <body>
-  <form>
-    <header th:replace="fragments/common :: navbar"></header>
+<header th:replace="fragments/common :: navbar"></header>
+<form th:action="@{/add/computer}" th:method="post" enctype="multipart/form-data">>
     <div class="container mt-5">
-      <h1 class="text-center"> Add Computer !</h1>
-      <hr>
-      <div class="row">
-        <div class="col">
-          <label for="model">PC</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Model</div>
+        <h1 class="text-center"> Add Computer !</h1>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label for="model">PC</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Model</div>
+                    </div>
+                    <input placeholder="Model of PC"
+                           id="model"
+                           name="model"
+                           type="text" aria-describedby="modelHelpBlock"
+                           required="required"
+                           class="form-control">
+                    <p class="errors alert alert-danger invalid-feedback">
+                        Model is required.
+                    </p>
+                </div>
             </div>
-            <input id="model" name="model" type="text" aria-describedby="modelHelpBlock" required="required"
-              class="form-control">
-          </div>
-        </div>
-        <div class="col">
-          <label for="price">PC</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Price</div>
+            <div class="col">
+                <label for="price">PC</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Price</div>
+                    </div>
+                    <input id="price"
+                           placeholder="Price of PC"
+                           name="price"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           class="form-control">
+                </div>
+                <span id="priceTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="price" name="price" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="priceTimeHelpInline" class="form-text text-muted">Must be positive</span>
-        </div>
-        <div class="col">
-          <label for="price">PC</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Motherboard</div>
+            <div class="col">
+                <label for="price">PC</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Motherboard</div>
+                    </div>
+                    <input id="motherboard"
+                           placeholder="Motherboard"
+                           name="motherboard"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           class="form-control">
+                </div>
+                <span id="motherboardTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="motherboard" name="motherboard" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="motherboardTimeHelpInline" class="form-text text-muted">Field is required</span>
         </div>
-      </div>
-      <!-- end of first row -->
-      <div class="row">
-        <div class="col">
-          <label for="price">PC</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Memory</div>
+        <!-- end of first row -->
+        <div class="row">
+            <div class="col">
+                <label for="price">PC</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Memory</div>
+                    </div>
+                    <input id="computerMemory"
+                           name="computerMemory"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Memory of PC"
+                           class="form-control">
+                </div>
+                <span id="memoryTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="memory" name="memory" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="memoryTimeHelpInline" class="form-text text-muted">Field is required</span>
-        </div>
-        <div class="col">
-          <label for="price">PC</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Storage</div>
+            <div class="col">
+                <label for="price">PC</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Storage</div>
+                    </div>
+                    <input id="storage"
+                           name="storage"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Storage of PC"
+                           class="form-control">
+                </div>
+                <span id="storageTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="storage" name="storage" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="storageTimeHelpInline" class="form-text text-muted">Field is required</span>
-        </div>
-        <div class="col">
-          <label for="price">PC</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Power Supply</div>
+            <div class="col">
+                <label for="price">PC</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Power Supply</div>
+                    </div>
+                    <input id="powerSupply"
+                           name="powerSupply"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Power Supply"
+                           class="form-control">
+                </div>
+                <span id="powerSupplyTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="powerSupply" name="powerSupply" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="powerSupplyTimeHelpInline" class="form-text text-muted">Field is required</span>
         </div>
-      </div>
-      <!-- end of second row -->
-      <hr>
-      <div class="row">
-        <div class="col">
-          <label for="price">Processor</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Model</div>
+        <!-- end of second row -->
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label for="price">Processor</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Model</div>
+                    </div>
+                    <input id="processorModel"
+                           name="processorModel"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Model of Processor"
+                           class="form-control">
+                </div>
+                <span id="modelProcessorTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="modelProcessor" name="modelProcessor" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="modelProcessorTimeHelpInline" class="form-text text-muted">Field is required</span>
-        </div>
-        <div class="col">
-          <label for="price">Processor</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Cores</div>
+            <div class="col">
+                <label for="price">Processor</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Cores</div>
+                    </div>
+                    <input id="processorCores"
+                           name="processorCores"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Processor cores"
+                           class="form-control">
+                </div>
+                <span id="coresTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="cores" name="cores" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="coresTimeHelpInline" class="form-text text-muted">Field is required</span>
-        </div>
-        <div class="col">
-          <label for="price">Processor</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Frequency</div>
+            <div class="col">
+                <label for="price">Processor</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Frequency</div>
+                    </div>
+                    <input id="processorFrequency"
+                           name="processorFrequency"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Frequency of processor"
+                           class="form-control">
+                </div>
+                <span id="frequencyTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="frequency" name="frequency" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="frequencyTimeHelpInline" class="form-text text-muted">Field is required</span>
         </div>
-      </div>
-      <hr>
-      <!-- end of third row -->
-      <div class="row">
-        <div class="col">
-          <label for="price">Video Card</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">GPU</div>
+        <hr>
+        <!-- end of third row -->
+        <div class="row">
+            <div class="col">
+                <label for="price">Video Card</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">GPU</div>
+                    </div>
+                    <input id="gpu"
+                           name="gpu"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="GPU"
+                           class="form-control">
+                </div>
+                <span id="gpuTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="gpu" name="gpu" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="gpuTimeHelpInline" class="form-text text-muted">Field is required</span>
-        </div>
-        <div class="col">
-          <label for="price">Video Card</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Memory</div>
+            <div class="col">
+                <label for="price">Video Card</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Memory</div>
+                    </div>
+                    <input id="videoCardMemory"
+                           name="videoCardMemory"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Video card memory"
+                           class="form-control">
+                </div>
+                <span id="memoryVideoTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="memoryVideo" name="memory" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="memoryVideoTimeHelpInline" class="form-text text-muted">Field is required</span>
-        </div>
-        <div class="col">
-          <label for="price">Video Card</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Type of memory</div>
+            <div class="col">
+                <label for="price">Video Card</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Type of memory</div>
+                    </div>
+                    <input id="videoTypeOfMemory"
+                           name="videoTypeOfMemory"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Type of memory"
+                           class="form-control">
+                </div>
+                <span id="typeOfMemoryTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
-            <input id="typeOfMemory" name="typeOfMemory" type="text" aria-describedby="priceHelpBlock" required="required"
-              class="form-control">
-          </div>
-          <span id="typeOfMemoryTimeHelpInline" class="form-text text-muted">Field is required</span>
         </div>
-      </div>
-      <hr>
-      <!-- end of forth row-->
-      <div class="form-group row">
-        <div class="col">
-          <label for="created">Created date</label>
-          <input type="date" class="form-control" id="created"
-            aria-describedby="createdHelpInline">
-          <small id="createdTimeHelpInline" class="invalid-feedback bg-danger text-light rounded">
-            Created date cannot be in the future.
-          </small>
+        <hr>
+        <!-- end of forth row-->
+        <div class="form-group row">
+            <div class="col">
+                <label for="created">Created date</label>
+                <input type="date"
+                       class="form-control"
+                       id="created"
+                       name="created"
+                       aria-describedby="createdHelpInline">
+                <span id="cratedTimeHelpInline" class="form-text text-muted">Date cannot be in future.</span>
+
+            </div>
+            <div class="col">
+                <label for="type">Select type of computer</label>
+                <div>
+                    <select id="type" name="type" class="custom-select">
+                        <option value="" selected>Select Type of Computer</option>
+                        <option th:each="t : ${T(bg.softuni.computershop.models.enums.DeviceTypeEnum).values()}"
+                                th:text="${t}" th:value="${t}">Gaming</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="picture">Picture</label>
+                    <input type="file"
+                           name="picture"
+                           class="form-control-file"
+                           id="picture">
+                </div>
+            </div>
         </div>
-        <div class="col">
-          <label for="select">Select type of computer</label>
-          <div>
-            <select id="select" name="select" class="custom-select">
-              <option value="rabbit">Gaming</option>
-              <option value="duck">Home</option>
-              <option value="fish">Office</option>
-            </select>
-          </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label for="description">Description</label>
+                <textarea id="description"
+                          name="description"
+                          cols="40" rows="4"
+                          class="form-control"></textarea>
+            </div>
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="exampleFormControlFile1">Picture</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-          </div>
+        <hr>
+        <div class="row">
+            <div class="col text-center align-content-center">
+                <button name="submit" type="submit" class="btn btn-primary ">Submit</button>
+            </div>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col">
-          <label for="textarea">Description</label>
-          <textarea id="textarea" name="textarea" cols="40" rows="4" class="form-control"></textarea>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col text-center">
-          <button name="submit" type="submit" class="btn btn-primary ">Submit</button>
-        </div>
-      </div>
-      <hr>
+        <hr>
     </div>
-  </form>
+</form>
 <footer class="text-center text-white" style="background-color: #17385a;">
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2021 Copyright:
-    <a class="text-white" href="https://github.com/naydennn">Nayden</a>
-  </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://github.com/naydennn">Nayden</a>
+    </div>
 </footer>
 </body>
 

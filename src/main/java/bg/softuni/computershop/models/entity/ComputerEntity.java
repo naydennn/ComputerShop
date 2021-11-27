@@ -3,7 +3,7 @@ package bg.softuni.computershop.models.entity;
 import bg.softuni.computershop.models.enums.DeviceTypeEnum;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "computers")
@@ -18,10 +18,10 @@ public class ComputerEntity extends BaseEntity {
     private String motherboard;
     private String powerSupply;
     private String description;
-    private LocalDateTime created;
+    private LocalDate created;
     private DeviceTypeEnum type;
+    private PictureEntity picture;
     private UserEntity user;
-    //add picture
 
     public ComputerEntity() {
     }
@@ -46,7 +46,7 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public VideoCardEntity getVideoCard() {
         return videoCard;
     }
@@ -105,13 +105,12 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @Column(nullable = false)
-    public LocalDateTime getCreated() {
+    public LocalDate getCreated() {
         return created;
     }
 
-    public ComputerEntity setCreated(LocalDateTime createdOn) {
-        this.created = createdOn;
+    public ComputerEntity setCreated(LocalDate created) {
+        this.created = created;
         return this;
     }
 
@@ -135,13 +134,23 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public ProcessorEntity getProcessor() {
         return processor;
     }
 
     public ComputerEntity setProcessor(ProcessorEntity processor) {
         this.processor = processor;
+        return this;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public PictureEntity getPicture() {
+        return picture;
+    }
+
+    public ComputerEntity setPicture(PictureEntity pictureEntity) {
+        this.picture = pictureEntity;
         return this;
     }
 }
