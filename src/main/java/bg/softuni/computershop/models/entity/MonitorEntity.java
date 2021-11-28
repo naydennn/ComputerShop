@@ -3,7 +3,7 @@ package bg.softuni.computershop.models.entity;
 import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -13,12 +13,13 @@ public class MonitorEntity extends BaseEntity {
     private String model;
     private String screen;
     private String resolution;
+    private String color;
     private List<ConnectionTypeEnum> connectionType;
     private Double price;
     private String description;
-    private LocalDateTime created;
+    private LocalDate created;
     private UserEntity user;
-    //add picture
+    private PictureEntity picture;
 
     public MonitorEntity() {
     }
@@ -52,19 +53,6 @@ public class MonitorEntity extends BaseEntity {
         return this;
     }
 
-    @ElementCollection(targetClass = ConnectionTypeEnum.class)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "connections_types")
-    @Column(name = "connections")
-    public List<ConnectionTypeEnum> getConnectionType() {
-        return connectionType;
-    }
-
-    public MonitorEntity setConnectionType(List<ConnectionTypeEnum> connectionType) {
-        this.connectionType = connectionType;
-        return this;
-    }
-
     @Column(nullable = false)
     public Double getPrice() {
         return price;
@@ -76,11 +64,11 @@ public class MonitorEntity extends BaseEntity {
     }
 
     @Column(nullable = false)
-    public LocalDateTime getCreated() {
+    public LocalDate getCreated() {
         return created;
     }
 
-    public MonitorEntity setCreated(LocalDateTime created) {
+    public MonitorEntity setCreated(LocalDate created) {
         this.created = created;
         return this;
     }
@@ -102,6 +90,38 @@ public class MonitorEntity extends BaseEntity {
 
     public MonitorEntity setUser(UserEntity user) {
         this.user = user;
+        return this;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public PictureEntity getPicture() {
+        return picture;
+    }
+
+    public MonitorEntity setPicture(PictureEntity picture) {
+        this.picture = picture;
+        return this;
+    }
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "collections_types", joinColumns = @JoinColumn(name = "monitor_id"))
+    @Enumerated(EnumType.STRING)
+    public List<ConnectionTypeEnum> getConnectionType() {
+        return connectionType;
+    }
+
+    public MonitorEntity setConnectionType(List<ConnectionTypeEnum> connectionType) {
+        this.connectionType = connectionType;
+        return this;
+    }
+
+    @Column(nullable = false)
+    public String getColor() {
+        return color;
+    }
+
+    public MonitorEntity setColor(String color) {
+        this.color = color;
         return this;
     }
 }

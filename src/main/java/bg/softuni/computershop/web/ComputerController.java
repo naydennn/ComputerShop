@@ -1,19 +1,22 @@
 package bg.softuni.computershop.web;
 
 import bg.softuni.computershop.models.binding.ComputerBindingModel;
+import bg.softuni.computershop.models.binding.LaptopBindingModel;
 import bg.softuni.computershop.models.service.ComputerServiceModel;
+import bg.softuni.computershop.models.view.ComputerViewModel;
 import bg.softuni.computershop.service.ComputerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class ComputerController {
@@ -26,8 +29,15 @@ public class ComputerController {
         this.computerService = computerService;
     }
 
+    @ModelAttribute("computerBindingModel")
+    public ComputerBindingModel computerBindingModel() {
+        return new ComputerBindingModel();
+    }
+
     @GetMapping("/computers")
-    public String allComputers() {
+    public String allComputers(Model model) {
+        List<ComputerViewModel> computers = computerService.getAllComputers();
+        model.addAttribute("computers" , computers);
         return "computers";
     }
 
@@ -36,20 +46,25 @@ public class ComputerController {
         return "add-computer";
     }
 
+
     @PostMapping("/add/computer")
     public String addComputerForm(@Valid ComputerBindingModel computerBindingModel,
                                   BindingResult bindingResult,
-                                  RedirectAttributes redirectAttributes) throws IOException {
+                                  RedirectAttributes redirectAttributes)  {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("computerAddBindingModel", computerBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.computerAddBindingModel",
+            redirectAttributes.addFlashAttribute("computerBindingModel", computerBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.computerBindingModel",
                     bindingResult);
 
             return "redirect:/add/computer";
         }
 
-        computerService.addComputer(modelMapper.map(computerBindingModel, ComputerServiceModel.class));
+        try {
+            computerService.addComputer(modelMapper.map(computerBindingModel, ComputerServiceModel.class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         return "redirect:/";

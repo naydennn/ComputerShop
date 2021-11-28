@@ -18,8 +18,8 @@ public class VideoCardEntity extends BaseEntity {
         return gpu;
     }
 
-    public VideoCardEntity setGpu(String GPU) {
-        this.gpu = GPU;
+    public VideoCardEntity setGpu(String gpu) {
+        this.gpu = gpu;
         return this;
     }
 

@@ -3,7 +3,7 @@ package bg.softuni.computershop.models.entity;
 import bg.softuni.computershop.models.enums.DeviceTypeEnum;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "laptops")
@@ -12,15 +12,16 @@ public class LaptopEntity extends BaseEntity{
     private String model;
     private ProcessorEntity processor;
     private VideoCardEntity videoCard;
+    private RamEntity ramEntity;
     private Double price;
-    private String memory;
     private String hardDisk;
     private String display;
     private String color;
-    private LocalDateTime createOn;
+    private String description;
+    private LocalDate created;
     private DeviceTypeEnum type;
     private UserEntity user;
-    // add picture
+    private PictureEntity picture;
 
     public LaptopEntity() {
     }
@@ -43,7 +44,7 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public VideoCardEntity getVideoCard() {
         return videoCard;
     }
@@ -53,12 +54,13 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
-    public String getMemory() {
-        return memory;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public RamEntity getRamEntity() {
+        return ramEntity;
     }
 
-    public LaptopEntity setMemory(String memory) {
-        this.memory = memory;
+    public LaptopEntity setRamEntity(RamEntity ramEntity) {
+        this.ramEntity = ramEntity;
         return this;
     }
 
@@ -109,7 +111,7 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public ProcessorEntity getProcessor() {
         return processor;
     }
@@ -119,12 +121,31 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
-    public LocalDateTime getCreateOn() {
-        return createOn;
+    public LocalDate getCreated() {
+        return created;
     }
 
-    public LaptopEntity setCreateOn(LocalDateTime createOn) {
-        this.createOn = createOn;
+    public LaptopEntity setCreated(LocalDate created) {
+        this.created = created;
+        return this;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public PictureEntity getPicture() {
+        return picture;
+    }
+
+    public LaptopEntity setPicture(PictureEntity picture) {
+        this.picture = picture;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LaptopEntity setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

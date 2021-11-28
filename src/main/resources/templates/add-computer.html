@@ -7,7 +7,7 @@
 
 <body>
 <header th:replace="fragments/common :: navbar"></header>
-<form th:action="@{/add/computer}" th:method="post" enctype="multipart/form-data">>
+<form th:action="@{/add/computer}" th:method="post" th:object="${computerBindingModel}" enctype="multipart/form-data">>
     <div class="container mt-5">
         <h1 class="text-center"> Add Computer !</h1>
         <hr>
@@ -19,14 +19,15 @@
                         <div class="input-group-text">Model</div>
                     </div>
                     <input placeholder="Model of PC"
+                           th:field="*{model}"
+                           th:errorclass="is-invalid"
                            id="model"
                            name="model"
                            type="text" aria-describedby="modelHelpBlock"
                            required="required"
                            class="form-control">
-                    <p class="errors alert alert-danger invalid-feedback">
-                        Model is required.
-                    </p>
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Model must be between 2 and 20 characters.</small>
                 </div>
             </div>
             <div class="col">
@@ -36,14 +37,17 @@
                         <div class="input-group-text">Price</div>
                     </div>
                     <input id="price"
+                           th:field="*{price}"
+                           th:errorclass="is-invalid"
                            placeholder="Price of PC"
                            name="price"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Price must be positive</small>
                 </div>
-                <span id="priceTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
             <div class="col">
                 <label for="price">PC</label>
@@ -52,14 +56,17 @@
                         <div class="input-group-text">Motherboard</div>
                     </div>
                     <input id="motherboard"
+                           th:field="*{motherboard}"
+                           th:errorclass="is-invalid"
                            placeholder="Motherboard"
                            name="motherboard"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Motherboard must be between 2 and 10 characters.</small>
                 </div>
-                <span id="motherboardTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
         </div>
         <!-- end of first row -->
@@ -68,17 +75,39 @@
                 <label for="price">PC</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">Memory</div>
+                        <div class="input-group-text">RAM</div>
                     </div>
-                    <input id="computerMemory"
-                           name="computerMemory"
+                    <input id="ram"
+                           th:field="*{ram}"
+                           th:errorclass="is-invalid"
+                           name="ram"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
-                           placeholder="Memory of PC"
+                           placeholder="RAM of PC"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Ram memory must be positive</small>
                 </div>
-                <span id="memoryTimeHelpInline" class="form-text text-muted">Field is required</span>
+            </div>
+            <div class="col">
+                <label for="price">PC</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Type of RAM</div>
+                    </div>
+                    <input id="typeOfRam"
+                           th:field="*{typeOfRam}"
+                           th:errorclass="is-invalid"
+                           name="typeOfRam"
+                           type="text"
+                           aria-describedby="priceHelpBlock"
+                           required="required"
+                           placeholder="Type of RAM"
+                           class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Type of RAM must be between 2 and 10 characters.</small>
+                </div>
             </div>
             <div class="col">
                 <label for="price">PC</label>
@@ -87,14 +116,17 @@
                         <div class="input-group-text">Storage</div>
                     </div>
                     <input id="storage"
+                           th:field="*{storage}"
+                           th:errorclass="is-invalid"
                            name="storage"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="Storage of PC"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Storage memory is required</small>
                 </div>
-                <span id="storageTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
             <div class="col">
                 <label for="price">PC</label>
@@ -103,14 +135,17 @@
                         <div class="input-group-text">Power Supply</div>
                     </div>
                     <input id="powerSupply"
+                           th:field="*{powerSupply}"
+                           th:errorclass="is-invalid"
                            name="powerSupply"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="Power Supply"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Power supply must be positive</small>
                 </div>
-                <span id="powerSupplyTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
         </div>
         <!-- end of second row -->
@@ -123,14 +158,17 @@
                         <div class="input-group-text">Model</div>
                     </div>
                     <input id="processorModel"
+                           th:field="*{processorModel}"
+                           th:errorclass="is-invalid"
                            name="processorModel"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="Model of Processor"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Processor model must be between 2 and 20 characters.</small>
                 </div>
-                <span id="modelProcessorTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
             <div class="col">
                 <label for="price">Processor</label>
@@ -139,14 +177,17 @@
                         <div class="input-group-text">Cores</div>
                     </div>
                     <input id="processorCores"
+                           th:field="*{processorCores}"
+                           th:errorclass="is-invalid"
                            name="processorCores"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="Processor cores"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Processor cores must be positive</small>
                 </div>
-                <span id="coresTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
             <div class="col">
                 <label for="price">Processor</label>
@@ -155,14 +196,17 @@
                         <div class="input-group-text">Frequency</div>
                     </div>
                     <input id="processorFrequency"
+                           th:field="*{processorFrequency}"
+                           th:errorclass="is-invalid"
                            name="processorFrequency"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="Frequency of processor"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Processor frequency must be positive</small>
                 </div>
-                <span id="frequencyTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
         </div>
         <hr>
@@ -174,15 +218,18 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">GPU</div>
                     </div>
-                    <input id="gpu"
-                           name="gpu"
+                    <input id="videoCardGpu"
+                           th:field="*{videoCardGpu}"
+                           th:errorclass="is-invalid"
+                           name="videoCardGpu"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="GPU"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Video card processor must be between 2 and 20 characters.</small>
                 </div>
-                <span id="gpuTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
             <div class="col">
                 <label for="price">Video Card</label>
@@ -191,14 +238,17 @@
                         <div class="input-group-text">Memory</div>
                     </div>
                     <input id="videoCardMemory"
+                           th:field="*{videoCardMemory}"
+                           th:errorclass="is-invalid"
                            name="videoCardMemory"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="Video card memory"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Video card memory must be positive</small>
                 </div>
-                <span id="memoryVideoTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
             <div class="col">
                 <label for="price">Video Card</label>
@@ -206,15 +256,18 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Type of memory</div>
                     </div>
-                    <input id="videoTypeOfMemory"
-                           name="videoTypeOfMemory"
+                    <input id="videoCardTypeOfMemory"
+                           th:field="*{videoCardTypeOfMemory}"
+                           th:errorclass="is-invalid"
+                           name="videoCardTypeOfMemory"
                            type="text"
                            aria-describedby="priceHelpBlock"
                            required="required"
                            placeholder="Type of memory"
                            class="form-control">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Video card type of memory must be between 2 and 10 characters.</small>
                 </div>
-                <span id="typeOfMemoryTimeHelpInline" class="form-text text-muted">Field is required</span>
             </div>
         </div>
         <hr>
@@ -223,30 +276,39 @@
             <div class="col">
                 <label for="created">Created date</label>
                 <input type="date"
+                       th:field="*{created}"
+                       th:errorclass="is-invalid"
                        class="form-control"
                        id="created"
                        name="created"
                        aria-describedby="createdHelpInline">
-                <span id="cratedTimeHelpInline" class="form-text text-muted">Date cannot be in future.</span>
-
+                <small class="invalid-feedback alert-danger px-2 h-20">
+                    Created date cannot be in the future.</small>
             </div>
             <div class="col">
                 <label for="type">Select type of computer</label>
                 <div>
-                    <select id="type" name="type" class="custom-select">
+                    <select id="type" th:field="*{type}" th:errorclass="is-invalid" name="type" class="custom-select">
                         <option value="" selected>Select Type of Computer</option>
                         <option th:each="t : ${T(bg.softuni.computershop.models.enums.DeviceTypeEnum).values()}"
                                 th:text="${t}" th:value="${t}">Gaming</option>
                     </select>
+                    <small id="categoryHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                        You must select the category.
+                    </small>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="picture">Picture</label>
                     <input type="file"
+                           th:field="*{picture}"
+                           th:errorclass="is-invalid"
                            name="picture"
                            class="form-control-file"
                            id="picture">
+                    <small class="invalid-feedback alert-danger px-2 h-20">
+                        Picture is required</small>
                 </div>
             </div>
         </div>

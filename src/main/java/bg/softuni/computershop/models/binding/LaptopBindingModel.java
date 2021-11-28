@@ -1,5 +1,6 @@
 package bg.softuni.computershop.models.binding;
 
+import bg.softuni.computershop.models.entity.UserEntity;
 import bg.softuni.computershop.models.enums.DeviceTypeEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,13 +11,13 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-public class ComputerBindingModel {
+public class LaptopBindingModel {
 
-    @NotNull
     @Size(min = 2, max = 20)
+    @NotNull
     private String model;
-    @NotNull
     @Size(min = 2, max = 20)
+    @NotNull
     private String processorModel;
     @NotNull
     @Positive
@@ -31,7 +32,7 @@ public class ComputerBindingModel {
     @Positive
     private Integer videoCardMemory;
     @NotNull
-    @Size(min = 2, max = 10)
+    @Size(min = 2, max = 20)
     private String videoCardTypeOfMemory;
     @NotNull
     @Positive
@@ -39,17 +40,17 @@ public class ComputerBindingModel {
     @NotNull
     @Size(min = 2, max = 10)
     private String typeOfRam;
-    @NotNull
     @Positive
+    @NotNull
     private Double price;
     @NotNull
-    private String storage;
+    private String hardDisk;
     @NotNull
-    @Size(min = 2, max = 20)
-    private String motherboard;
+    private String display;
     @NotNull
-    @Positive
-    private String powerSupply;
+    @Size(min = 2, max = 10)
+    private String color;
+    @NotNull
     private String description;
     @PastOrPresent
     @NotNull
@@ -57,17 +58,18 @@ public class ComputerBindingModel {
     private LocalDate created;
     @NotNull
     private DeviceTypeEnum type;
+    private UserEntity user;
     @NotNull
     private MultipartFile picture;
 
-    public ComputerBindingModel() {
+    public LaptopBindingModel() {
     }
 
     public String getModel() {
         return model;
     }
 
-    public ComputerBindingModel setModel(String model) {
+    public LaptopBindingModel setModel(String model) {
         this.model = model;
         return this;
     }
@@ -76,7 +78,7 @@ public class ComputerBindingModel {
         return processorModel;
     }
 
-    public ComputerBindingModel setProcessorModel(String processorModel) {
+    public LaptopBindingModel setProcessorModel(String processorModel) {
         this.processorModel = processorModel;
         return this;
     }
@@ -85,7 +87,7 @@ public class ComputerBindingModel {
         return processorCores;
     }
 
-    public ComputerBindingModel setProcessorCores(Integer processorCores) {
+    public LaptopBindingModel setProcessorCores(Integer processorCores) {
         this.processorCores = processorCores;
         return this;
     }
@@ -94,7 +96,7 @@ public class ComputerBindingModel {
         return processorFrequency;
     }
 
-    public ComputerBindingModel setProcessorFrequency(Double processorFrequency) {
+    public LaptopBindingModel setProcessorFrequency(Double processorFrequency) {
         this.processorFrequency = processorFrequency;
         return this;
     }
@@ -103,7 +105,7 @@ public class ComputerBindingModel {
         return videoCardGpu;
     }
 
-    public ComputerBindingModel setVideoCardGpu(String videoCardGpu) {
+    public LaptopBindingModel setVideoCardGpu(String videoCardGpu) {
         this.videoCardGpu = videoCardGpu;
         return this;
     }
@@ -112,7 +114,7 @@ public class ComputerBindingModel {
         return videoCardMemory;
     }
 
-    public ComputerBindingModel setVideoCardMemory(Integer videoCardMemory) {
+    public LaptopBindingModel setVideoCardMemory(Integer videoCardMemory) {
         this.videoCardMemory = videoCardMemory;
         return this;
     }
@@ -121,17 +123,8 @@ public class ComputerBindingModel {
         return videoCardTypeOfMemory;
     }
 
-    public ComputerBindingModel setVideoCardTypeOfMemory(String videoCardTypeOfMemory) {
+    public LaptopBindingModel setVideoCardTypeOfMemory(String videoCardTypeOfMemory) {
         this.videoCardTypeOfMemory = videoCardTypeOfMemory;
-        return this;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public ComputerBindingModel setPrice(Double price) {
-        this.price = price;
         return this;
     }
 
@@ -139,35 +132,53 @@ public class ComputerBindingModel {
         return ram;
     }
 
-    public ComputerBindingModel setRam(Integer ram) {
+    public LaptopBindingModel setRam(Integer ram) {
         this.ram = ram;
         return this;
     }
 
-    public String getStorage() {
-        return storage;
+    public String getTypeOfRam() {
+        return typeOfRam;
     }
 
-    public ComputerBindingModel setStorage(String storage) {
-        this.storage = storage;
+    public LaptopBindingModel setTypeOfRam(String typeOfRam) {
+        this.typeOfRam = typeOfRam;
         return this;
     }
 
-    public String getMotherboard() {
-        return motherboard;
+    public Double getPrice() {
+        return price;
     }
 
-    public ComputerBindingModel setMotherboard(String motherboard) {
-        this.motherboard = motherboard;
+    public LaptopBindingModel setPrice(Double price) {
+        this.price = price;
         return this;
     }
 
-    public String getPowerSupply() {
-        return powerSupply;
+    public String getHardDisk() {
+        return hardDisk;
     }
 
-    public ComputerBindingModel setPowerSupply(String powerSupply) {
-        this.powerSupply = powerSupply;
+    public LaptopBindingModel setHardDisk(String hardDisk) {
+        this.hardDisk = hardDisk;
+        return this;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
+
+    public LaptopBindingModel setDisplay(String display) {
+        this.display = display;
+        return this;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public LaptopBindingModel setColor(String color) {
+        this.color = color;
         return this;
     }
 
@@ -175,17 +186,16 @@ public class ComputerBindingModel {
         return description;
     }
 
-    public ComputerBindingModel setDescription(String description) {
+    public LaptopBindingModel setDescription(String description) {
         this.description = description;
         return this;
     }
-
 
     public LocalDate getCreated() {
         return created;
     }
 
-    public ComputerBindingModel setCreated(LocalDate created) {
+    public LaptopBindingModel setCreated(LocalDate created) {
         this.created = created;
         return this;
     }
@@ -194,8 +204,17 @@ public class ComputerBindingModel {
         return type;
     }
 
-    public ComputerBindingModel setType(DeviceTypeEnum type) {
+    public LaptopBindingModel setType(DeviceTypeEnum type) {
         this.type = type;
+        return this;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public LaptopBindingModel setUser(UserEntity user) {
+        this.user = user;
         return this;
     }
 
@@ -203,17 +222,8 @@ public class ComputerBindingModel {
         return picture;
     }
 
-    public ComputerBindingModel setPicture(MultipartFile picture) {
+    public LaptopBindingModel setPicture(MultipartFile picture) {
         this.picture = picture;
-        return this;
-    }
-
-    public String getTypeOfRam() {
-        return typeOfRam;
-    }
-
-    public ComputerBindingModel setTypeOfRam(String typeOfRam) {
-        this.typeOfRam = typeOfRam;
         return this;
     }
 }

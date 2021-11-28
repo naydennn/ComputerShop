@@ -12,8 +12,8 @@ public class ComputerEntity extends BaseEntity {
     private String model;
     private ProcessorEntity processor;
     private VideoCardEntity videoCard;
+    private RamEntity ram;
     private Double price;
-    private String memory;
     private String storage;
     private String motherboard;
     private String powerSupply;
@@ -46,7 +46,7 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public VideoCardEntity getVideoCard() {
         return videoCard;
     }
@@ -56,13 +56,13 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @Column(nullable = false)
-    public String getMemory() {
-        return memory;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public RamEntity getRam() {
+        return ram;
     }
 
-    public ComputerEntity setMemory(String memory) {
-        this.memory = memory;
+    public ComputerEntity setRam(RamEntity ram) {
+        this.ram = ram;
         return this;
     }
 
@@ -134,7 +134,7 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public ProcessorEntity getProcessor() {
         return processor;
     }
@@ -144,7 +144,7 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public PictureEntity getPicture() {
         return picture;
     }

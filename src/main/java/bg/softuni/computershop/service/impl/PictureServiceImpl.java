@@ -1,7 +1,5 @@
 package bg.softuni.computershop.service.impl;
 
-import bg.softuni.computershop.models.entity.PictureEntity;
-import bg.softuni.computershop.models.service.PictureServiceModel;
 import bg.softuni.computershop.repository.PictureRepository;
 import bg.softuni.computershop.service.PictureService;
 import org.modelmapper.ModelMapper;
@@ -18,14 +16,6 @@ public class PictureServiceImpl implements PictureService {
         this.pictureRepository = pictureRepository;
     }
 
-    @Override
-    public void addPicture(PictureServiceModel picture) {
-
-        PictureEntity pictureEntity = modelMapper.map(picture, PictureEntity.class);
-
-        pictureRepository.save(pictureEntity);
-
-    }
 
     @Override
     public void deletePicture(String publicId) {

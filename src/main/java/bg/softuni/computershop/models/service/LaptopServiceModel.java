@@ -2,35 +2,38 @@ package bg.softuni.computershop.models.service;
 
 import bg.softuni.computershop.models.entity.ProcessorEntity;
 import bg.softuni.computershop.models.entity.RamEntity;
+import bg.softuni.computershop.models.entity.UserEntity;
 import bg.softuni.computershop.models.entity.VideoCardEntity;
 import bg.softuni.computershop.models.enums.DeviceTypeEnum;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import java.time.LocalDate;
 
-public class ComputerServiceModel {
+public class LaptopServiceModel {
 
     private String model;
     private ProcessorEntity processor;
     private VideoCardEntity videoCard;
     private RamEntity ram;
     private Double price;
-    private String storage;
-    private String motherboard;
-    private String powerSupply;
+    private String hardDisk;
+    private String display;
+    private String color;
     private String description;
     private LocalDate created;
     private DeviceTypeEnum type;
+    private UserEntity user;
     private MultipartFile picture;
 
-    public ComputerServiceModel() {
+    public LaptopServiceModel() {
     }
 
     public String getModel() {
         return model;
     }
 
-    public ComputerServiceModel setModel(String model) {
+    public LaptopServiceModel setModel(String model) {
         this.model = model;
         return this;
     }
@@ -39,7 +42,7 @@ public class ComputerServiceModel {
         return processor;
     }
 
-    public ComputerServiceModel setProcessor(ProcessorEntity processor) {
+    public LaptopServiceModel setProcessor(ProcessorEntity processor) {
         this.processor = processor;
         return this;
     }
@@ -48,7 +51,7 @@ public class ComputerServiceModel {
         return videoCard;
     }
 
-    public ComputerServiceModel setVideoCard(VideoCardEntity videoCard) {
+    public LaptopServiceModel setVideoCard(VideoCardEntity videoCard) {
         this.videoCard = videoCard;
         return this;
     }
@@ -57,7 +60,7 @@ public class ComputerServiceModel {
         return ram;
     }
 
-    public ComputerServiceModel setRam(RamEntity ram) {
+    public LaptopServiceModel setRam(RamEntity ram) {
         this.ram = ram;
         return this;
     }
@@ -66,35 +69,35 @@ public class ComputerServiceModel {
         return price;
     }
 
-    public ComputerServiceModel setPrice(Double price) {
+    public LaptopServiceModel setPrice(Double price) {
         this.price = price;
         return this;
     }
 
-    public String getStorage() {
-        return storage;
+    public String getHardDisk() {
+        return hardDisk;
     }
 
-    public ComputerServiceModel setStorage(String storage) {
-        this.storage = storage;
+    public LaptopServiceModel setHardDisk(String hardDisk) {
+        this.hardDisk = hardDisk;
         return this;
     }
 
-    public String getMotherboard() {
-        return motherboard;
+    public String getDisplay() {
+        return display;
     }
 
-    public ComputerServiceModel setMotherboard(String motherboard) {
-        this.motherboard = motherboard;
+    public LaptopServiceModel setDisplay(String display) {
+        this.display = display;
         return this;
     }
 
-    public String getPowerSupply() {
-        return powerSupply;
+    public String getColor() {
+        return color;
     }
 
-    public ComputerServiceModel setPowerSupply(String powerSupply) {
-        this.powerSupply = powerSupply;
+    public LaptopServiceModel setColor(String color) {
+        this.color = color;
         return this;
     }
 
@@ -102,7 +105,7 @@ public class ComputerServiceModel {
         return description;
     }
 
-    public ComputerServiceModel setDescription(String description) {
+    public LaptopServiceModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -111,7 +114,7 @@ public class ComputerServiceModel {
         return created;
     }
 
-    public ComputerServiceModel setCreated(LocalDate created) {
+    public LaptopServiceModel setCreated(LocalDate created) {
         this.created = created;
         return this;
     }
@@ -120,8 +123,17 @@ public class ComputerServiceModel {
         return type;
     }
 
-    public ComputerServiceModel setType(DeviceTypeEnum type) {
+    public LaptopServiceModel setType(DeviceTypeEnum type) {
         this.type = type;
+        return this;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public LaptopServiceModel setUser(UserEntity user) {
+        this.user = user;
         return this;
     }
 
@@ -129,7 +141,7 @@ public class ComputerServiceModel {
         return picture;
     }
 
-    public ComputerServiceModel setPicture(MultipartFile picture) {
+    public LaptopServiceModel setPicture(MultipartFile picture) {
         this.picture = picture;
         return this;
     }
