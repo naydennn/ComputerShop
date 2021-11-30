@@ -96,6 +96,7 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
+    @Column(columnDefinition = "TEXT")
     public String getDescription() {
         return description;
     }

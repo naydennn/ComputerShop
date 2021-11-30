@@ -1,26 +1,27 @@
 package bg.softuni.computershop.models.view;
 
-
-public class ComputerViewModel {
+public class LaptopViewModel {
 
     private String model;
     private String processorModel;
     private String videoCardGpu;
     private Integer ram;
     private String typeOfRam;
-    private String storage;
+    private String hardDisk;
     private String pictureUrl;
     private Double price;
     private String type;
+    private String color;
+    private String display;
 
-    public ComputerViewModel() {
+    public LaptopViewModel() {
     }
 
     public String getModel() {
         return model;
     }
 
-    public ComputerViewModel setModel(String model) {
+    public LaptopViewModel setModel(String model) {
         this.model = model;
         return this;
     }
@@ -29,7 +30,7 @@ public class ComputerViewModel {
         return processorModel;
     }
 
-    public ComputerViewModel setProcessorModel(String processorModel) {
+    public LaptopViewModel setProcessorModel(String processorModel) {
         this.processorModel = processorModel;
         return this;
     }
@@ -38,7 +39,7 @@ public class ComputerViewModel {
         return videoCardGpu;
     }
 
-    public ComputerViewModel setVideoCardGpu(String videoCardGpu) {
+    public LaptopViewModel setVideoCardGpu(String videoCardGpu) {
         this.videoCardGpu = videoCardGpu;
         return this;
     }
@@ -47,7 +48,7 @@ public class ComputerViewModel {
         return ram;
     }
 
-    public ComputerViewModel setRam(Integer ram) {
+    public LaptopViewModel setRam(Integer ram) {
         this.ram = ram;
         return this;
     }
@@ -56,17 +57,17 @@ public class ComputerViewModel {
         return typeOfRam;
     }
 
-    public ComputerViewModel setTypeOfRam(String typeOfRam) {
+    public LaptopViewModel setTypeOfRam(String typeOfRam) {
         this.typeOfRam = typeOfRam;
         return this;
     }
 
-    public String getStorage() {
-        return storage;
+    public String getHardDisk() {
+        return hardDisk;
     }
 
-    public ComputerViewModel setStorage(String storage) {
-        this.storage = storage;
+    public LaptopViewModel setHardDisk(String hardDisk) {
+        this.hardDisk = hardDisk;
         return this;
     }
 
@@ -74,7 +75,7 @@ public class ComputerViewModel {
         return pictureUrl;
     }
 
-    public ComputerViewModel setPictureUrl(String pictureUrl) {
+    public LaptopViewModel setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
         return this;
     }
@@ -83,7 +84,7 @@ public class ComputerViewModel {
         return price;
     }
 
-    public ComputerViewModel setPrice(Double price) {
+    public LaptopViewModel setPrice(Double price) {
         this.price = price;
         return this;
     }
@@ -92,8 +93,26 @@ public class ComputerViewModel {
         return type;
     }
 
-    public ComputerViewModel setType(String type) {
+    public LaptopViewModel setType(String type) {
         this.type = type;
+        return this;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public LaptopViewModel setColor(String color) {
+        this.color = color;
+        return this;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
+
+    public LaptopViewModel setDisplay(String display) {
+        this.display = display;
         return this;
     }
 }

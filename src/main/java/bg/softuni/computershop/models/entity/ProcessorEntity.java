@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "proccesor")
+@Table(name = "processor")
 public class ProcessorEntity extends BaseEntity{
 
     private String model;

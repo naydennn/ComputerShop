@@ -20,17 +20,19 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 ">
-            <div class="col mb-5">
+            <div class="col mb-5" th:each="laptop : ${laptops}" th:object="${laptop}">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <img class="card-img-top" src="/images/gaming_laptop_hp.jpg" alt="Gaming hp"/>
+                    <img class="card-img-top" th:src="*{pictureUrl}" alt="Gaming hp"/>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
-                            <span class="badge rounded-pill px-4 bg-secondary">Gaming</span>
-                            <p class="fw-bolder">HP - Pavilion 17-cd1001nu, 17.3",core i7, 144Hz, gray</p>
-                            <p>Price: 1200$</p>
+                            <span class="badge rounded-pill px-4 bg-secondary" th:text="*{type}">Gaming</span>
+                            <p class="fw-bolder" th:text="|*{model} - *{processorModel}, *{videoCardGpu}, *{ram}GB *{typeOfRam}, *{hardDisk}GB, *{display}, *{color}|">
+                            <p th:text="|Price is: *{price}|">Price: 1200$</p>
                             <button type="button" class="btn btn-info">Buy</button>
+                            <button type="button" class="btn btn-primary">Details</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
                         </div>
                     </div>
                 </div>

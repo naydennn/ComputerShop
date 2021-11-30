@@ -4,6 +4,7 @@ import bg.softuni.computershop.models.binding.LaptopBindingModel;
 import bg.softuni.computershop.models.binding.MonitorAddBindingModel;
 import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
+import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.service.MonitorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,10 @@ public class MonitorController {
     }
 
     @GetMapping("/monitors")
-    public String allMonitors() {
+    public String allMonitors(Model model) {
+        List<MonitorViewModel> monitors = monitorService.getAllMonitors();
+
+        model.addAttribute("monitors", monitors);
         return "monitors";
     }
 

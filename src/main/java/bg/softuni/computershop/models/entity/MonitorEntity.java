@@ -12,7 +12,7 @@ public class MonitorEntity extends BaseEntity {
 
     private String model;
     private String screen;
-    private String resolution;
+    private Double size;
     private String color;
     private List<ConnectionTypeEnum> connectionType;
     private Double price;
@@ -44,12 +44,12 @@ public class MonitorEntity extends BaseEntity {
     }
 
     @Column(nullable = false)
-    public String getResolution() {
-        return resolution;
+    public Double getSize() {
+        return size;
     }
 
-    public MonitorEntity setResolution(String resolutions) {
-        this.resolution = resolutions;
+    public MonitorEntity setSize(Double size) {
+        this.size = size;
         return this;
     }
 
@@ -73,7 +73,7 @@ public class MonitorEntity extends BaseEntity {
         return this;
     }
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     public String getDescription() {
         return description;
     }
@@ -104,7 +104,7 @@ public class MonitorEntity extends BaseEntity {
     }
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "collections_types", joinColumns = @JoinColumn(name = "monitor_id"))
+    @CollectionTable(name = "connections_types", joinColumns = @JoinColumn(name = "monitor_id"))
     @Enumerated(EnumType.STRING)
     public List<ConnectionTypeEnum> getConnectionType() {
         return connectionType;

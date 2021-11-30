@@ -24,8 +24,8 @@ public class MonitorAddBindingModel {
     @Size(min = 2, max = 10)
     private String color;
     @NotNull
-    @Size(min = 2, max = 10)
-    private String resolution;
+    @Positive
+    private Double size;
     private List<ConnectionTypeEnum> connections;
     @Positive
     @NotNull
@@ -60,12 +60,12 @@ public class MonitorAddBindingModel {
         return this;
     }
 
-    public String getResolution() {
-        return resolution;
+    public Double getSize() {
+        return size;
     }
 
-    public MonitorAddBindingModel setResolution(String resolution) {
-        this.resolution = resolution;
+    public MonitorAddBindingModel setSize(Double size) {
+        this.size = size;
         return this;
     }
 

@@ -11,7 +11,7 @@ public class MonitorServiceModel {
 
     private String model;
     private String screen;
-    private String resolution;
+    private Double size;
     private String color;
     private List<ConnectionTypeEnum> connections;
     private Double price;
@@ -41,12 +41,12 @@ public class MonitorServiceModel {
         return this;
     }
 
-    public String getResolution() {
-        return resolution;
+    public Double getSize() {
+        return size;
     }
 
-    public MonitorServiceModel setResolution(String resolution) {
-        this.resolution = resolution;
+    public MonitorServiceModel setSize(Double size) {
+        this.size = size;
         return this;
     }
 
