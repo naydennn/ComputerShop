@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="/fragments/common :: head"></head>
 <body>
@@ -27,9 +26,12 @@
                             <span class="badge rounded-pill px-4 bg-secondary" th:text="*{type}">Gaming</span>
                             <p class="fw-bolder" th:text="|*{model} - *{processorModel}, *{videoCardGpu}, *{ram}GB *{typeOfRam}, *{storage}GB|"></p>
                             <p th:text="|Price is : *{price}|"></p>
-                            <button type="button" class="btn btn-info">Buy</button>
-                            <button type="button" class="btn btn-primary">Details</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <a type="button" th:href="@{/buy/{id}/computer(id=*{id})}" class="btn btn-info">Buy</a>
+                            <a type="button" th:href="@{/computer/{id}/details(id=*{id})}" class="btn btn-primary">Details</a>
+                            <form th:action="@{/delete/{id}/computer(id=*{id})}" th:method="delete">
+                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                            </form>
+
                         </div>
                     </div>
                 </div>

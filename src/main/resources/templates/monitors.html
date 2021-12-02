@@ -30,7 +30,7 @@
                             <p class="fw-bolder" th:text="|*{model} , *{size}, *{screen}|">HP - Pavilion 17-cd1001nu, 17.3",core i7, 144Hz, gray</p>
                             <p th:text="|Price: *{price}|">Price: 1200$</p>
                             <button type="button" class="btn btn-info">Buy</button>
-                            <button type="button" class="btn btn-primary">Details</button>
+                            <a type="button" th:href="@{/monitor/{id}/details(id=*{id})}" class="btn btn-primary">Details</a>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </div>
                     </div>

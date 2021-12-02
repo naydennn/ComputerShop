@@ -8,4 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ComputerRepository extends JpaRepository<ComputerEntity, Long> {
+
 }

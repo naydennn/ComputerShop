@@ -4,6 +4,7 @@ import bg.softuni.computershop.models.entity.CloudinaryImage;
 import bg.softuni.computershop.models.entity.MonitorEntity;
 import bg.softuni.computershop.models.entity.PictureEntity;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
+import bg.softuni.computershop.models.view.MonitorDetailsViewModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.repository.MonitorRepository;
 import bg.softuni.computershop.service.CloudinaryService;
@@ -46,5 +47,13 @@ public class MonitorServiceImpl implements MonitorService {
         return monitorRepository.findAll().stream()
                 .map(monitorEntity -> modelMapper.map(monitorEntity, MonitorViewModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public MonitorDetailsViewModel getMonitorById(Long id) {
+
+        MonitorEntity monitorEntity = monitorRepository.findById(id).get();
+
+        return modelMapper.map(monitorEntity, MonitorDetailsViewModel.class);
     }
 }

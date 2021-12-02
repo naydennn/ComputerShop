@@ -1,7 +1,6 @@
 package bg.softuni.computershop.web;
 
 import bg.softuni.computershop.models.binding.ComputerBindingModel;
-import bg.softuni.computershop.models.binding.LaptopBindingModel;
 import bg.softuni.computershop.models.service.ComputerServiceModel;
 import bg.softuni.computershop.models.view.ComputerViewModel;
 import bg.softuni.computershop.service.ComputerService;
@@ -9,13 +8,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -46,6 +44,23 @@ public class ComputerController {
         return "add-computer";
     }
 
+    @GetMapping("/computer/{id}/details")
+    public String showComputerDetail(@PathVariable Long id,
+                                     Model model){
+
+        model.addAttribute("computer", computerService.getComputerById(id));
+
+        return "computerDetails";
+    }
+
+    @GetMapping("/buy/{id}/computer")
+    public String buyComputer(@PathVariable Long id,
+                              Principal principal) {
+
+        computerService.buyComputer(id, principal.getName());
+
+        return "computers";
+    }
 
     @PostMapping("/add/computer")
     public String addComputerForm(@Valid ComputerBindingModel computerBindingModel,
@@ -68,5 +83,13 @@ public class ComputerController {
 
 
         return "redirect:/";
+    }
+
+    @DeleteMapping("/delete/{id}/computer")
+    public String deleteComputer(@PathVariable Long id){
+
+        computerService.deleteComputer(id);
+
+        return "redirect:/computers";
     }
 }

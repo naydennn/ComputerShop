@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/common :: head"></head>
+<body>
+<header th:replace="fragments/common :: navbar"></header>
+<div class="container" th:object="${computer}">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4 text-center" th:text="*{model}">Page Heading
+        <small>Secondary Text</small>
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-6">
+            <img class="img-fluid" th:src="*{picture.getUrl()}" alt="" height="350" width="350">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3 text-center">Computer Description</h3>
+            <p th:text="*{description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque
+                urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies,
+                justo eu convallis placerat, felis enim.</p>
+            <h3 class="my-3">Computer specification</h3>
+            <ul>
+                <li th:text="|Processor: *{processor.model}, *{processor.cores}, *{processor.frequency} GHz|"></li>
+                <li th:text="|Video card: *{videoCard.gpu}, *{videoCard.memory} GB, *{videoCard.typeOfMemory}|">
+                </li>
+                <li th:text="|Ram: *{ram.ram} GB, *{ram.typeOfRam}|">Consectetur</li>
+                <li th:text="|Hard disk: *{storage}|">Consectetur</li>
+                <li th:text="|MotherBoard: *{motherboard}|">Consectetur</li>
+                <li th:text="|Power supply: *{powerSupply} W|">Consectetur</li>
+                <li th:text="|Type: *{type} |">Consectetur</li>
+                <li th:text="|Price: *{price}|">Consectetur</li>
+            </ul>
+            <button type="button" class="btn btn-info">Buy</button>
+        </div>
+
+    </div>
+
+</div>
+</body>

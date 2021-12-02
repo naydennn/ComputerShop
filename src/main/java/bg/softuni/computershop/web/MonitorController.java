@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -53,6 +54,15 @@ public class MonitorController {
 
         model.addAttribute("connections", connections);
         return "add-monitor";
+    }
+
+    @GetMapping("/monitor/{id}/details")
+    public String showMonitor(@PathVariable Long id,
+                              Model model) {
+
+        model.addAttribute("monitor", monitorService.getMonitorById(id));
+
+        return "monitorDetails";
     }
 
     @PostMapping("/add/monitor")

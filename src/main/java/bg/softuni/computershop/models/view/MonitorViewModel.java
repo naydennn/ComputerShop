@@ -2,6 +2,7 @@ package bg.softuni.computershop.models.view;
 
 public class MonitorViewModel {
 
+    private Long id;
     private String model;
     private String screen;
     private Double size;
@@ -53,6 +54,15 @@ public class MonitorViewModel {
 
     public MonitorViewModel setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public MonitorViewModel setId(Long id) {
+        this.id = id;
         return this;
     }
 }

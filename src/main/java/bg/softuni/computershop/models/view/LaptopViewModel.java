@@ -2,6 +2,7 @@ package bg.softuni.computershop.models.view;
 
 public class LaptopViewModel {
 
+    private Long id;
     private String model;
     private String processorModel;
     private String videoCardGpu;
@@ -113,6 +114,15 @@ public class LaptopViewModel {
 
     public LaptopViewModel setDisplay(String display) {
         this.display = display;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LaptopViewModel setId(Long id) {
+        this.id = id;
         return this;
     }
 }

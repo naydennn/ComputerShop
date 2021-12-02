@@ -151,17 +151,17 @@ INSERT INTO video_cards (`id`, `gpu`, `memory`, `type_of_memory`)
 VALUES (14, 'NVIDIA GeForce RTX 2060', 6, 'GDDR6');
 
 INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (1, '2021-11-28', '....', 'AMD Ryzen 7 PRO 5750G', 'MSI B550M PRO-VDH', 600, 649, '500 GB SSD M.2 NVMe', 'OFFICE' , 1 , 1 , 1, null, 1);
+VALUES (1, '2021-11-28', 'Power your business with speed, security, and reliability using the AMD Ryzen 7 PRO 5750G 3.8 GHz Eight-Core AM4 Processor, which features 8 cores and 16 threads to help quickly load and multitask demanding applications.', 'AMD Ryzen 7 PRO 5750G', 'MSI B550M PRO-VDH', 600, 649, '500 GB SSD M.2 NVMe', 'OFFICE' , 1 , 1 , 1, null, 1);
 INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (2, '2021-11-28', '....', 'Acer Nitro N50-620', 'AMD B450 chipset', 500, 1200, '512 GB SSD M.2 NVMe', 'GAMING', 2 , 2 , 2, null, 2);
+VALUES (2, '2021-11-28', 'The fiery-accented, black metal Nitro 50 gaming PC is all the fuel you need for those high frame, lag-free game sessions. Go on and switch settings to ultra with an injection of the latest 11th Gen Intel Core i7 Processors and up to GeForce RTX™ 30 Series graphics1.', 'Acer Nitro N50-620', 'AMD B450 chipset', 500, 1200, '512 GB SSD M.2 NVMe', 'GAMING', 2 , 2 , 2, null, 2);
 INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (3, '2021-11-28', '....', 'ASUS ROG Strix GT35', 'Intel Z370 ATX', 700, 3500, '1000 GB SSD M.2 NVMe', 'GAMING',3 , 3 , 3, null, 3);
+VALUES (3, '2021-11-28', 'The ROG Strix GT35''s casing is a custom ATX, cooling-focused multi-chambered chassis design with a liquid cooling system. The case itself measures 27.9 x 43.3 x 50.1cm and comes with the usual ports and connectivity at the front including two USB 3.2 Type-A, two USB 3.2 Type-C, mic-in and headphone-out.', 'ASUS ROG Strix GT35', 'Intel Z370 ATX', 700, 3500, '1000 GB SSD M.2 NVMe', 'GAMING',3 , 3 , 3, null, 3);
 INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
 VALUES (4, '2021-11-28', '....', 'Viper RX880', 'GIGABYTE AORUS B560', 850, 1790, '1000 GB SSD M.2', 'GAMING', 4, 4, 4, null, 4);
 INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (5, '2021-11-29', '....', 'Dell - Inspiron 3880', 'Intel B460', 600, 710.99, '256B SSD', 'OFFICE', 5 , 5 , 5, null, 5);
+VALUES (5, '2021-11-29', 'The Dell Inspiron Desktop model 3880 is a modest general-purpose budget desktop that will blend into any home-office setup. You''ll find few frills—see the simple, super-compact design and the lack of USB Type-C ports—but the system does the job for everyday multitasking with its Core i5 processor and built-in Wi-Fi', 'Dell - Inspiron 3880', 'Intel B460', 600, 710.99, '256B SSD', 'OFFICE', 5 , 5 , 5, null, 5);
 INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (6, '2021-11-29', '....', 'Lenovo V55t 15API', 'AMD B300', 5500, 499.99, '500 GB SSD', 'HOME',6 , 6 , 6, null, 6);
+VALUES (6, '2021-11-29', 'If your business manages its budget aggressively but still needs high-performance computing, the V55t tower desktop is the solution for you. Cutting-edge AMD Ryzen™ processors and high-speed DDR4 memory means you can efficiently handle large files and multitask. We’ve also put this 15L PC through rigorous durability tests so you can count on it for the long haul.', 'Lenovo V55t 15API', 'AMD B300', 5500, 499.99, '500 GB SSD', 'HOME',6 , 6 , 6, null, 6);
 INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
 VALUES (7, '2021-11-29', '....', 'Dell Vostro 3888 MT', 'Intel B460', 600, 550, '1TB 7200RPM 3.5" SATA HDD', 'HOME', 7, 7, 7, null, 7);
 

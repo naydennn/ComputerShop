@@ -4,6 +4,7 @@ import bg.softuni.computershop.models.entity.CloudinaryImage;
 import bg.softuni.computershop.models.entity.LaptopEntity;
 import bg.softuni.computershop.models.entity.PictureEntity;
 import bg.softuni.computershop.models.service.LaptopServiceModel;
+import bg.softuni.computershop.models.view.LaptopDetailsViewModel;
 import bg.softuni.computershop.models.view.LaptopViewModel;
 import bg.softuni.computershop.repository.LaptopRepository;
 import bg.softuni.computershop.service.CloudinaryService;
@@ -46,5 +47,13 @@ public class LaptopServiceImpl implements LaptopService {
          return laptopRepository.findAll().stream()
                  .map(laptopEntity -> modelMapper.map(laptopEntity, LaptopViewModel.class))
                  .collect(Collectors.toList());
+    }
+
+    @Override
+    public LaptopDetailsViewModel getLaptopById(Long id) {
+
+        LaptopEntity laptopEntity = laptopRepository.findById(id).get();
+
+        return modelMapper.map(laptopEntity, LaptopDetailsViewModel.class);
     }
 }

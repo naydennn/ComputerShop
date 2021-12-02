@@ -31,7 +31,7 @@
                             <p class="fw-bolder" th:text="|*{model} - *{processorModel}, *{videoCardGpu}, *{ram}GB *{typeOfRam}, *{hardDisk}GB, *{display}, *{color}|">
                             <p th:text="|Price is: *{price}|">Price: 1200$</p>
                             <button type="button" class="btn btn-info">Buy</button>
-                            <button type="button" class="btn btn-primary">Details</button>
+                            <a type="button" th:href="@{/laptop/{id}/details(id=*{id})}" class="btn btn-primary">Details</a>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </div>
                     </div>
