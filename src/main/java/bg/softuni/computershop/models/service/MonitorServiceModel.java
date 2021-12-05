@@ -1,11 +1,9 @@
 package bg.softuni.computershop.models.service;
 
 import bg.softuni.computershop.models.entity.UserEntity;
-import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class MonitorServiceModel {
 
@@ -13,7 +11,6 @@ public class MonitorServiceModel {
     private String screen;
     private Double size;
     private String color;
-    private List<ConnectionTypeEnum> connections;
     private Double price;
     private String description;
     private LocalDate created;
@@ -47,15 +44,6 @@ public class MonitorServiceModel {
 
     public MonitorServiceModel setSize(Double size) {
         this.size = size;
-        return this;
-    }
-
-    public List<ConnectionTypeEnum> getConnections() {
-        return connections;
-    }
-
-    public MonitorServiceModel setConnections(List<ConnectionTypeEnum> connections) {
-        this.connections = connections;
         return this;
     }
 

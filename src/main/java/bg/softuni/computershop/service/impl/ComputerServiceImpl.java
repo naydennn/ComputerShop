@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,14 +19,14 @@ public class ComputerServiceImpl implements ComputerService {
 
     private final ComputerRepository computerRepository;
     private final CloudinaryService cloudinaryService;
-    private final UserService userService;
     private final ModelMapper modelMapper;
+    private final UserService userService;
 
-    public ComputerServiceImpl(ComputerRepository computerRepository, CloudinaryService cloudinaryService, UserService userService, ModelMapper modelMapper) {
+    public ComputerServiceImpl(ComputerRepository computerRepository, CloudinaryService cloudinaryService, ModelMapper modelMapper, UserService userService) {
         this.computerRepository = computerRepository;
         this.cloudinaryService = cloudinaryService;
-        this.userService = userService;
         this.modelMapper = modelMapper;
+        this.userService = userService;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public ComputerDetailView getComputerById(Long id) {
+    public ComputerDetailView getComputerDetailById(Long id) {
         ComputerEntity computerEntity = computerRepository.findById(id).get();
 
         return modelMapper.map(computerEntity, ComputerDetailView.class);
@@ -58,9 +59,11 @@ public class ComputerServiceImpl implements ComputerService {
         UserEntity userEntity = userService.findByUsername(username);
         ComputerEntity computerEntity = computerRepository.findById(id).get();
 
-        computerEntity.setUser(userEntity);
-    }
+        computerEntity.setUsers(Set.of(userEntity));
 
+        computerRepository.save(computerEntity);
+
+    }
     @Override
     public void deleteComputer(Long id) {
         computerRepository.deleteById(id);

@@ -9,14 +9,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -58,6 +56,15 @@ public class LaptopController {
         return "laptopDetails";
     }
 
+    @GetMapping("/buy/{id}/laptop")
+    public String buyLaptop(@PathVariable Long id,
+                            Principal principal) {
+
+        laptopService.buyLaptop(id, principal.getName());
+
+        return "redirect:/profile";
+    }
+
     @PostMapping("/add/laptop")
     public String addLaptopForm(@Valid LaptopBindingModel laptopBindingModel,
                             BindingResult bindingResult,
@@ -78,5 +85,13 @@ public class LaptopController {
         }
 
         return "redirect:/";
+    }
+
+    @DeleteMapping("/delete/{id}/laptop")
+    public String deleteLaptop(@PathVariable Long id) {
+
+        laptopService.deleteLaptop(id);
+
+        return "redirect:/laptops";
     }
 }

@@ -4,6 +4,8 @@ import bg.softuni.computershop.models.enums.DeviceTypeEnum;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "laptops")
@@ -20,8 +22,8 @@ public class LaptopEntity extends BaseEntity{
     private String description;
     private LocalDate created;
     private DeviceTypeEnum type;
-    private UserEntity user;
     private PictureEntity picture;
+    private Set<UserEntity> users;
 
     public LaptopEntity() {
     }
@@ -101,16 +103,6 @@ public class LaptopEntity extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public LaptopEntity setUser(UserEntity user) {
-        this.user = user;
-        return this;
-    }
-
     @OneToOne(cascade = CascadeType.ALL)
     public ProcessorEntity getProcessor() {
         return processor;
@@ -147,6 +139,16 @@ public class LaptopEntity extends BaseEntity{
 
     public LaptopEntity setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    public Set<UserEntity> getUsers() {
+        return users;
+    }
+
+    public LaptopEntity setUsers(Set<UserEntity> users) {
+        this.users = users;
         return this;
     }
 }

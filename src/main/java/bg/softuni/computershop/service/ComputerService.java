@@ -1,5 +1,6 @@
 package bg.softuni.computershop.service;
 
+import bg.softuni.computershop.models.entity.ComputerEntity;
 import bg.softuni.computershop.models.service.ComputerServiceModel;
 import bg.softuni.computershop.models.view.ComputerDetailView;
 import bg.softuni.computershop.models.view.ComputerViewModel;
@@ -13,9 +14,9 @@ public interface ComputerService {
 
     List<ComputerViewModel> getAllComputers();
 
-    ComputerDetailView getComputerById(Long id);
+    ComputerDetailView getComputerDetailById(Long id);
 
-    void buyComputer(Long id, String name);
+    void buyComputer(Long id, String username);
 
     void deleteComputer(Long id);
 }

@@ -4,6 +4,9 @@ import bg.softuni.computershop.models.enums.DeviceTypeEnum;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "computers")
@@ -21,7 +24,7 @@ public class ComputerEntity extends BaseEntity {
     private LocalDate created;
     private DeviceTypeEnum type;
     private PictureEntity picture;
-    private UserEntity user;
+    private Set<UserEntity> users;
 
     public ComputerEntity() {
     }
@@ -125,16 +128,6 @@ public class ComputerEntity extends BaseEntity {
         return this;
     }
 
-    @ManyToOne
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public ComputerEntity setUser(UserEntity user) {
-        this.user = user;
-        return this;
-    }
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public ProcessorEntity getProcessor() {
         return processor;
@@ -152,6 +145,16 @@ public class ComputerEntity extends BaseEntity {
 
     public ComputerEntity setPicture(PictureEntity pictureEntity) {
         this.picture = pictureEntity;
+        return this;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    public Set<UserEntity> getUsers() {
+        return users;
+    }
+
+    public ComputerEntity setUsers(Set<UserEntity> users) {
+        this.users = users;
         return this;
     }
 }

@@ -14,4 +14,8 @@ public interface LaptopService {
     List<LaptopViewModel> getAll();
 
     LaptopDetailsViewModel getLaptopById(Long id);
+
+    void buyLaptop(Long id, String username);
+
+    void deleteLaptop(Long id);
 }

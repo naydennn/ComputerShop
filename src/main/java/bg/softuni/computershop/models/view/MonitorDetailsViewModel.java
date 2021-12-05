@@ -2,10 +2,8 @@ package bg.softuni.computershop.models.view;
 
 import bg.softuni.computershop.models.entity.PictureEntity;
 import bg.softuni.computershop.models.entity.UserEntity;
-import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class MonitorDetailsViewModel {
 
@@ -13,7 +11,6 @@ public class MonitorDetailsViewModel {
     private String screen;
     private Double size;
     private String color;
-    private List<ConnectionTypeEnum> connectionType;
     private Double price;
     private String description;
     private LocalDate created;
@@ -56,15 +53,6 @@ public class MonitorDetailsViewModel {
 
     public MonitorDetailsViewModel setColor(String color) {
         this.color = color;
-        return this;
-    }
-
-    public List<ConnectionTypeEnum> getConnectionType() {
-        return connectionType;
-    }
-
-    public MonitorDetailsViewModel setConnectionType(List<ConnectionTypeEnum> connectionType) {
-        this.connectionType = connectionType;
         return this;
     }
 

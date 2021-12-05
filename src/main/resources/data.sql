@@ -150,60 +150,55 @@ VALUES (13, 'Apple M1 Max', 32, null);
 INSERT INTO video_cards (`id`, `gpu`, `memory`, `type_of_memory`)
 VALUES (14, 'NVIDIA GeForce RTX 2060', 6, 'GDDR6');
 
-INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (1, '2021-11-28', 'Power your business with speed, security, and reliability using the AMD Ryzen 7 PRO 5750G 3.8 GHz Eight-Core AM4 Processor, which features 8 cores and 16 threads to help quickly load and multitask demanding applications.', 'AMD Ryzen 7 PRO 5750G', 'MSI B550M PRO-VDH', 600, 649, '500 GB SSD M.2 NVMe', 'OFFICE' , 1 , 1 , 1, null, 1);
-INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (2, '2021-11-28', 'The fiery-accented, black metal Nitro 50 gaming PC is all the fuel you need for those high frame, lag-free game sessions. Go on and switch settings to ultra with an injection of the latest 11th Gen Intel Core i7 Processors and up to GeForce RTX™ 30 Series graphics1.', 'Acer Nitro N50-620', 'AMD B450 chipset', 500, 1200, '512 GB SSD M.2 NVMe', 'GAMING', 2 , 2 , 2, null, 2);
-INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (3, '2021-11-28', 'The ROG Strix GT35''s casing is a custom ATX, cooling-focused multi-chambered chassis design with a liquid cooling system. The case itself measures 27.9 x 43.3 x 50.1cm and comes with the usual ports and connectivity at the front including two USB 3.2 Type-A, two USB 3.2 Type-C, mic-in and headphone-out.', 'ASUS ROG Strix GT35', 'Intel Z370 ATX', 700, 3500, '1000 GB SSD M.2 NVMe', 'GAMING',3 , 3 , 3, null, 3);
-INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (4, '2021-11-28', '....', 'Viper RX880', 'GIGABYTE AORUS B560', 850, 1790, '1000 GB SSD M.2', 'GAMING', 4, 4, 4, null, 4);
-INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (5, '2021-11-29', 'The Dell Inspiron Desktop model 3880 is a modest general-purpose budget desktop that will blend into any home-office setup. You''ll find few frills—see the simple, super-compact design and the lack of USB Type-C ports—but the system does the job for everyday multitasking with its Core i5 processor and built-in Wi-Fi', 'Dell - Inspiron 3880', 'Intel B460', 600, 710.99, '256B SSD', 'OFFICE', 5 , 5 , 5, null, 5);
-INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (6, '2021-11-29', 'If your business manages its budget aggressively but still needs high-performance computing, the V55t tower desktop is the solution for you. Cutting-edge AMD Ryzen™ processors and high-speed DDR4 memory means you can efficiently handle large files and multitask. We’ve also put this 15L PC through rigorous durability tests so you can count on it for the long haul.', 'Lenovo V55t 15API', 'AMD B300', 5500, 499.99, '500 GB SSD', 'HOME',6 , 6 , 6, null, 6);
-INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `user_id`, `video_card_id`)
-VALUES (7, '2021-11-29', '....', 'Dell Vostro 3888 MT', 'Intel B460', 600, 550, '1TB 7200RPM 3.5" SATA HDD', 'HOME', 7, 7, 7, null, 7);
+INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `video_card_id`)
+VALUES (1, '2021-11-28', 'Power your business with speed, security, and reliability using the AMD Ryzen 7 PRO 5750G 3.8 GHz Eight-Core AM4 Processor, which features 8 cores and 16 threads to help quickly load and multitask demanding applications.', 'AMD Ryzen 7 PRO 5750G', 'MSI B550M PRO-VDH', 600, 649, '500 GB SSD M.2 NVMe', 'OFFICE' , 1 , 1 , 1, 1);
+INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `video_card_id`)
+VALUES (2, '2021-11-28', 'The fiery-accented, black metal Nitro 50 gaming PC is all the fuel you need for those high frame, lag-free game sessions. Go on and switch settings to ultra with an injection of the latest 11th Gen Intel Core i7 Processors and up to GeForce RTX™ 30 Series graphics1.', 'Acer Nitro N50-620', 'AMD B450 chipset', 500, 1200, '512 GB SSD M.2 NVMe', 'GAMING', 2 , 2 , 2, 2);
+INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`,  `video_card_id`)
+VALUES (3, '2021-11-28', 'The ROG Strix GT35''s casing is a custom ATX, cooling-focused multi-chambered chassis design with a liquid cooling system. The case itself measures 27.9 x 43.3 x 50.1cm and comes with the usual ports and connectivity at the front including two USB 3.2 Type-A, two USB 3.2 Type-C, mic-in and headphone-out.', 'ASUS ROG Strix GT35', 'Intel Z370 ATX', 700, 3500, '1000 GB SSD M.2 NVMe', 'GAMING',3 , 3 , 3, 3);
+INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `video_card_id`)
+VALUES (4, '2021-11-28', '....', 'Viper RX880', 'GIGABYTE AORUS B560', 850, 1790, '1000 GB SSD M.2', 'GAMING', 4, 4, 4, 4);
+INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `video_card_id`)
+VALUES (5, '2021-11-29', 'The Dell Inspiron Desktop model 3880 is a modest general-purpose budget desktop that will blend into any home-office setup. You''ll find few frills—see the simple, super-compact design and the lack of USB Type-C ports—but the system does the job for everyday multitasking with its Core i5 processor and built-in Wi-Fi', 'Dell - Inspiron 3880', 'Intel B460', 600, 710.99, '256B SSD', 'OFFICE', 5 , 5 , 5, 5);
+INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `video_card_id`)
+VALUES (6, '2021-11-29', 'If your business manages its budget aggressively but still needs high-performance computing, the V55t tower desktop is the solution for you. Cutting-edge AMD Ryzen™ processors and high-speed DDR4 memory means you can efficiently handle large files and multitask. We’ve also put this 15L PC through rigorous durability tests so you can count on it for the long haul.', 'Lenovo V55t 15API', 'AMD B300', 5500, 499.99, '500 GB SSD', 'HOME',6 , 6 , 6, 6);
+INSERT INTO computers (`id`, `created`, `description`, `model`, `motherboard`, `power_supply`, `price`, `storage`, `type`, `picture_id`, `processor_id`, `ram_id`, `video_card_id`)
+VALUES (7, '2021-11-29', '....', 'Dell Vostro 3888 MT', 'Intel B460', 600, 550, '1TB 7200RPM 3.5" SATA HDD', 'HOME', 7, 7, 7, 7);
 
 
-INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `user_id`, `video_card_id`)
-VALUES (1, 'Graffit', '2021-11-29', '...', 'IPS matte', '512 GB M.2 NVMe SSD', 'ASUS ROG Strix G15', 1400, 'GAMING', 8, 8 ,8, null, 8);
-INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `user_id`, `video_card_id`)
-VALUES (2, 'Black', '2021-11-29', '...', 'IPS Matte Full HD', '2048 GB M.2 NVMe SSD', 'Alienware m15 R2', 3500, 'GAMING', 9, 9 , 9, null, 9);
-INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `user_id`, `video_card_id`)
-VALUES (3, 'Black', '2021-11-29', '...', 'IPS matte', '1024 GB M.2 NVMe SSD', 'ASUS ZenBook Flip S13', 1350, 'HOME', 10, 10 ,10, null, 10);
-INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `user_id`, `video_card_id`)
-VALUES (4, 'Metalic', '2021-11-29', '...', 'IPS Full HD', '512 GB M.2 NVMe SSD', 'HP 255 G8', 550, 'HOME', 11, 11 ,11, null, 11);
-INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `user_id`, `video_card_id`)
-VALUES (5, 'Black', '2021-11-29', '...', 'IPS Matte Full HD', '512 GB M.2 NVMe SSD', 'MSI Modern 14 B10RBS', 749.99, 'OFFICE', 12, 12 ,12, null, 12);
-INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `user_id`, `video_card_id`)
-VALUES (6, 'Metalic', '2021-11-29', '...', 'Liquid Retina XDR', '1024 SSD', 'Apple MacBook Pro 16', 3049.99, 'OFFICE', 13, 13 ,13, null, 13);
-INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `user_id`, `video_card_id`)
-VALUES (14, 'Black', '2021-11-29', '...', 'IPS matte', '512 GB M.2 NVMe SSD', 'MSI GF65 Thin 10SER', 949, 'GAMING', 14, 14 ,14, null, 14);
+INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `video_card_id`)
+VALUES (1, 'Graffit', '2021-11-29', 'The Asus ROG Strix G15 is a mid-range gaming laptop that doesn’t look particularly special. It’s fairly bulky and comes with the usual selection of RGB lights and gamer-style logo adorning it. But it has a hidden superpower.', 'IPS matte', '512 GB M.2 NVMe SSD', 'ASUS ROG Strix G15', 1400, 'GAMING', 8, 8 ,8,  8);
+INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `video_card_id`)
+VALUES (2, 'Black', '2021-11-29', 'More exciting in function and design than the original, Alienware''s m15 R2 gaming laptop delivers serious frame-rate juice and state-of-the-art features, including, in our test unit, a stellar 4K OLED display.', 'IPS Matte Full HD', '2048 GB M.2 NVMe SSD', 'Alienware m15 R2', 3500, 'GAMING', 9, 9 , 9, 9);
+INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `video_card_id`)
+VALUES (3, 'Black', '2021-11-29', 'The distinctive ZenBook Flip S13 OLED combines elegant sophistication with an all-new design that makes it more desirable than ever. Its sleek 4K OLED HDR NanoEdge display and 360° ErgoLift hinge make ZenBook Flip S13 OLED ultra-compact and ultra-versatile, and the 11th Generation Intel® Core™ processor and Intel® Iris® Xe graphics deliver effortless performance for on-the-go productivity and creativity. ZenBook Flip S13 OLED brings you flexibility and performance — with a touch of luxury.', 'IPS matte', '1024 GB M.2 NVMe SSD', 'ASUS ZenBook Flip S13', 1350, 'HOME', 10, 10 ,10, 10);
+INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `video_card_id`)
+VALUES (4, 'Metalic', '2021-11-29', 'Get connected with the HP 255 Laptop PC with powerful technology and a streamlined chassis that’s easy to take everywhere you go. Complete business tasks with an AMD processor and essential collaboration tools.', 'IPS Full HD', '512 GB M.2 NVMe SSD', 'HP 255 G8', 550, 'HOME', 11, 11 ,11, 11);
+INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `video_card_id`)
+VALUES (5, 'Black', '2021-11-29', 'MSI Modern 14 is a compelling budget laptop for day-to-day tasks, packing reasonable battery life, a good mix of ports, and proper build quality. For a highly affordable laptop, the Modern 14 looks pretty classy. It’s nothing out of the ordinary, but the overall style is nice, if simple. ', 'IPS Matte Full HD', '512 GB M.2 NVMe SSD', 'MSI Modern 14 B10RBS', 749.99, 'OFFICE', 12, 12 ,12, 12);
+INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `video_card_id`)
+VALUES (6, 'Metalic', '2021-11-29', '...', 'Liquid Retina XDR', '1024 SSD', 'Apple MacBook Pro 16', 3049.99, 'OFFICE', 13, 13 ,13, 13);
+INSERT INTO laptops (`id`, `color`, `created`, `description`, `display`, `hard_disk`, `model`, `price`, `type`, `picture_id`, `processor_id`, `ram_entity_id`, `video_card_id`)
+VALUES (14, 'Black', '2021-11-29', '...', 'IPS matte', '512 GB M.2 NVMe SSD', 'MSI GF65 Thin 10SER', 949, 'GAMING', 14, 14 ,14, 14);
 
-INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`, `user_id`)
+INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`)
 VALUES (1, 'Black', '2021-11-30', 'Designed for creative professionals the LG 16:9  Monitor, delivers exceptional color accuracy alongside a variety of connectivity options to support your video editing workflow. Supporting a 3840 x 2160 resolution at 60 Hz, this 4K OLED monitor delivers deliver vibrant colors with high-dynamic range, covering 99% of the DCI-P3 and Adobe RGB spectrums.',
-        'LG UltraFine 32EP950-B', 3999.10, 32, '4K HDR OLED IPS', 15, null);
-INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`, `user_id`)
+        'LG UltraFine 32EP950-B', 3999.10, 32, '4K HDR OLED IPS', 15);
+INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`)
 VALUES (2, 'Black', '2021-11-30', 'It features a 43-inch 4K panel with an astonishing 120Hz refresh rate, high dynamic range (HDR) technology with 90% DCI-P3 professional color gamut coverage and exceptional contrast for DisplayHDR™ 600 certification, plus support for AMD FreeSync™ Premium Pro technology.',
-        'ASUS ROG Strix XG438QR', 1055.99, 43, 'LED-backlit LCD monitor / TFT active matrix', 16, null);
-INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`, `user_id`)
+        'ASUS ROG Strix XG438QR', 1055.99, 43, 'LED-backlit LCD monitor / TFT active matrix', 16);
+INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`)
 VALUES (3, 'Black', '2021-11-30', 'The Alienware 25 Gaming Monitor possesses the world''s fastest refresh rate at 360Hz i. Gameplay is now fully optimized to enable split-second reactions and with a refresh rate this fast, you can count on a no-scope headshot before the enemy even knows you''re there.',
-        'Alienware AW2521H', 299.99, 32, 'IPS Matte', 17, null);
-INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`, `user_id`)
+        'Alienware AW2521H', 299.99, 32, 'IPS Matte', 17);
+INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`)
 VALUES (4, 'Black', '2021-11-30', 'This Full HD monitor''s MVA panel offers brilliant colours and wide viewing angles. Two HDMI ports and integrated speakers make it a good fit for watching Blu-ray and DVD movies.',
-        'AOC M2470SWH', 100, 23.6, 'Full HD LED', 18, null);
-INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`, `user_id`)
+        'AOC M2470SWH', 100, 23.6, 'Full HD LED', 18);
+INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`)
 VALUES (5, 'Black', '2021-11-30', 'Optimized for Windows 10 and its touchscreen functions that include tap, swipe, slide, pinch/stretch, rotate, 5-point touch, and 10-point touch, the VT229H 21.5" 16:9 Multi-Touch IPS Monitor from ASUS combines a capacitive multi-touch display with panel that has a 7H hardness rating, and a native resolution of 1920 x 1080. It also features In-Plane Switching (IPS) technology, support for 16.7 million colors using 6-bit + FRC, a widescreen 16:9 aspect ratio, a static contrast ratio of 1000:1, an ASUS Smart Contrast Ratio of 100,000,000:1, 250 cd/m2 brightness, 102 pixels per inch, and a 5 ms (GtG) response time.',
-        'ASUS VT229H', 219, 21.5, 'IPS, Touchs', 19, null);
-INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`, `user_id`)
+        'ASUS VT229H', 219, 21.5, 'IPS, Touchs', 19);
+INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`)
 VALUES (6, 'Metalic', '2021-11-30', 'The Pro Display XDR is a 32-inch 6K LCD that can hit 1,600 nits of peak brightness, with 1,000 nits of sustained brightness from a full-array local dimming backlight composed of 576 special blue LEDs. It supports true 10-bit color and the full DCI-P3 color gamut, and Apple says that it can hit a million-to-one contrast ratio using certain industry-standard test patterns.',
-        'Apple Pro XDR', 5999, 32, 'IPS LCD display with oxide TFT technology', 20, null);
-INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`, `user_id`)
+        'Apple Pro XDR', 5999, 32, 'IPS LCD display with oxide TFT technology', 20);
+INSERT INTO monitors(`id`, `color`, `created`, `description`, `model`, `price`, `size`, `screen`, `picture_id`)
 VALUES (7, 'Black/Metalic', '2021-11-30', 'The 24V2Q boasts a 3-sides frameless 23.8” IPS display in Full HD resolution, with hidden “Edge” frame design and sturdy metal stand. Ready for fast pace games and moving pictures with FreeSync, 75Hz refresh rate and 5 ms response time.',
-        'AOC 24V2Q', 150, 21.5, 'IPS', 21, null);
-
-INSERT INTO connections_types(`monitor_id`, `connection_type`)
-VALUES (1, 'HDMI'),
-       (1, 'USB'),
-       (1, 'DISPLAY_PORT');
+        'AOC 24V2Q', 150, 21.5, 'IPS', 21);

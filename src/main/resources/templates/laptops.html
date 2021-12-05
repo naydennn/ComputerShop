@@ -30,9 +30,10 @@
                             <span class="badge rounded-pill px-4 bg-secondary" th:text="*{type}">Gaming</span>
                             <p class="fw-bolder" th:text="|*{model} - *{processorModel}, *{videoCardGpu}, *{ram}GB *{typeOfRam}, *{hardDisk}GB, *{display}, *{color}|">
                             <p th:text="|Price is: *{price}|">Price: 1200$</p>
-                            <button type="button" class="btn btn-info">Buy</button>
-                            <a type="button" th:href="@{/laptop/{id}/details(id=*{id})}" class="btn btn-primary">Details</a>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <a type="button" th:href="@{/buy/{id}/laptop(id=*{id})}" class="btn btn-info">Buy</a>                            <a type="button" th:href="@{/laptop/{id}/details(id=*{id})}" class="btn btn-primary">Details</a>
+                            <form th:action="@{/delete/{id}/laptop(id=*{id})}" th:method="delete">
+                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                            </form>
                         </div>
                     </div>
                 </div>

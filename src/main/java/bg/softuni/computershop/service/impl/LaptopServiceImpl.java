@@ -3,28 +3,33 @@ package bg.softuni.computershop.service.impl;
 import bg.softuni.computershop.models.entity.CloudinaryImage;
 import bg.softuni.computershop.models.entity.LaptopEntity;
 import bg.softuni.computershop.models.entity.PictureEntity;
+import bg.softuni.computershop.models.entity.UserEntity;
 import bg.softuni.computershop.models.service.LaptopServiceModel;
 import bg.softuni.computershop.models.view.LaptopDetailsViewModel;
 import bg.softuni.computershop.models.view.LaptopViewModel;
 import bg.softuni.computershop.repository.LaptopRepository;
 import bg.softuni.computershop.service.CloudinaryService;
 import bg.softuni.computershop.service.LaptopService;
+import bg.softuni.computershop.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class LaptopServiceImpl implements LaptopService {
 
     private final ModelMapper modelMapper;
+    private final UserService userService;
     private final CloudinaryService cloudinaryService;
     private final LaptopRepository laptopRepository;
 
-    public LaptopServiceImpl(ModelMapper modelMapper, CloudinaryService cloudinaryService, LaptopRepository laptopRepository) {
+    public LaptopServiceImpl(ModelMapper modelMapper, UserService userService, CloudinaryService cloudinaryService, LaptopRepository laptopRepository) {
         this.modelMapper = modelMapper;
+        this.userService = userService;
         this.cloudinaryService = cloudinaryService;
         this.laptopRepository = laptopRepository;
     }
@@ -55,5 +60,21 @@ public class LaptopServiceImpl implements LaptopService {
         LaptopEntity laptopEntity = laptopRepository.findById(id).get();
 
         return modelMapper.map(laptopEntity, LaptopDetailsViewModel.class);
+    }
+
+    @Override
+    public void buyLaptop(Long id, String username) {
+        UserEntity userEntity = userService.findByUsername(username);
+
+        LaptopEntity laptopEntity = laptopRepository.findById(id).get();
+
+        laptopEntity.setUsers(Set.of(userEntity));
+
+        laptopRepository.save(laptopEntity);
+    }
+
+    @Override
+    public void deleteLaptop(Long id) {
+        laptopRepository.deleteById(id);
     }
 }

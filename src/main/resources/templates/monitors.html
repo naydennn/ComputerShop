@@ -29,9 +29,10 @@
                         <div class="text-center">
                             <p class="fw-bolder" th:text="|*{model} , *{size}, *{screen}|">HP - Pavilion 17-cd1001nu, 17.3",core i7, 144Hz, gray</p>
                             <p th:text="|Price: *{price}|">Price: 1200$</p>
-                            <button type="button" class="btn btn-info">Buy</button>
+                            <a type="button" th:href="@{/buy/{id}/monitor(id=*{id})}" class="btn btn-info">Buy</a>
                             <a type="button" th:href="@{/monitor/{id}/details(id=*{id})}" class="btn btn-primary">Details</a>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <form th:action="@{/delete/{id}/monitor(id=*{id})}" th:method="delete">
+                                <input type="submit" class="btn btn-danger" value="Delete"/>                             </form>
                         </div>
                     </div>
                 </div>

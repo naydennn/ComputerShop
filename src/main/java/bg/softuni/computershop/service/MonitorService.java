@@ -1,5 +1,6 @@
 package bg.softuni.computershop.service;
 
+import bg.softuni.computershop.models.entity.MonitorEntity;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
 import bg.softuni.computershop.models.view.MonitorDetailsViewModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
@@ -13,5 +14,9 @@ public interface MonitorService {
 
     List<MonitorViewModel> getAllMonitors();
 
-    MonitorDetailsViewModel getMonitorById(Long id);
+    MonitorDetailsViewModel getMonitorDetailById(Long id);
+
+    void deleteMonitor(Long id);
+
+    void buyMonitor(Long id, String username);
 }

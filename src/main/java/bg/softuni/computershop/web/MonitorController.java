@@ -1,8 +1,6 @@
 package bg.softuni.computershop.web;
 
-import bg.softuni.computershop.models.binding.LaptopBindingModel;
 import bg.softuni.computershop.models.binding.MonitorAddBindingModel;
-import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.service.MonitorService;
@@ -10,14 +8,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -45,14 +41,8 @@ public class MonitorController {
     }
 
     @GetMapping("/add/monitor")
-    public String addMonitor(Model model) {
-        List<ConnectionTypeEnum> connections = List.of(ConnectionTypeEnum.DVI,
-                ConnectionTypeEnum.DISPLAY_PORT,
-                ConnectionTypeEnum.USB,
-                ConnectionTypeEnum.VGA,
-                ConnectionTypeEnum.HDMI);
+    public String addMonitor() {
 
-        model.addAttribute("connections", connections);
         return "add-monitor";
     }
 
@@ -60,10 +50,20 @@ public class MonitorController {
     public String showMonitor(@PathVariable Long id,
                               Model model) {
 
-        model.addAttribute("monitor", monitorService.getMonitorById(id));
+        model.addAttribute("monitor", monitorService.getMonitorDetailById(id));
 
         return "monitorDetails";
     }
+
+    @GetMapping("/buy/{id}/monitor")
+    public String buyMonitor(@PathVariable Long id,
+                             Principal principal){
+
+        monitorService.buyMonitor(id, principal.getName());
+
+        return "redirect:/profile";
+    }
+
 
     @PostMapping("/add/monitor")
     public String addMonitorForm(@Valid MonitorAddBindingModel monitorAddBindingModel,
@@ -86,4 +86,13 @@ public class MonitorController {
         }
         return "redirect:/";
     }
+
+    @DeleteMapping("/delete/{id}/monitor")
+    public String deleteMonitor(@PathVariable Long id){
+
+        monitorService.deleteMonitor(id);
+
+        return "redirect:/monitors";
+    }
+
 }

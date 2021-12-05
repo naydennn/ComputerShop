@@ -1,7 +1,6 @@
 package bg.softuni.computershop.models.binding;
 
 import bg.softuni.computershop.models.entity.UserEntity;
-import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,7 +9,6 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.List;
 
 public class MonitorAddBindingModel {
 
@@ -26,7 +24,6 @@ public class MonitorAddBindingModel {
     @NotNull
     @Positive
     private Double size;
-    private List<ConnectionTypeEnum> connections;
     @Positive
     @NotNull
     private Double price;
@@ -66,15 +63,6 @@ public class MonitorAddBindingModel {
 
     public MonitorAddBindingModel setSize(Double size) {
         this.size = size;
-        return this;
-    }
-
-    public List<ConnectionTypeEnum> getConnections() {
-        return connections;
-    }
-
-    public MonitorAddBindingModel setConnections(List<ConnectionTypeEnum> connections) {
-        this.connections = connections;
         return this;
     }
 

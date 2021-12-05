@@ -1,17 +1,21 @@
 package bg.softuni.computershop.service.impl;
 
+import bg.softuni.computershop.models.entity.ComputerEntity;
+import bg.softuni.computershop.models.entity.MonitorEntity;
 import bg.softuni.computershop.models.entity.UserEntity;
 import bg.softuni.computershop.models.entity.UserRoleEntity;
 import bg.softuni.computershop.models.enums.UserRoleEnum;
 import bg.softuni.computershop.models.service.UserRegisterServiceModel;
+import bg.softuni.computershop.models.view.UserViewModel;
 import bg.softuni.computershop.repository.UserRepository;
 import bg.softuni.computershop.repository.UserRoleRepository;
+import bg.softuni.computershop.service.ComputerService;
+import bg.softuni.computershop.service.MonitorService;
 import bg.softuni.computershop.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -30,17 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void init(){
-        initRoles();
-    }
-
-    @Override
     public void registerUser(UserRegisterServiceModel userRegisterServiceModel) {
         UserEntity user = modelMapper.map(userRegisterServiceModel, UserEntity.class);
-        UserRoleEntity adminRole = userRoleRepository.findByRole(UserRoleEnum.ADMIN);
         UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
 
-        user.setRoles(Set.of(adminRole, userRole));
+        user.setRoles(Set.of(userRole));
         user.setMoney(0.0);
         user.setPassword(passwordEncoder.encode(userRegisterServiceModel.getPassword()));
 
@@ -53,15 +51,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username).get();
     }
 
-    private void initRoles() {
-        if (userRoleRepository.count() == 0) {
-            UserRoleEntity adminRole = new UserRoleEntity();
-            adminRole.setRole(UserRoleEnum.ADMIN);
+    @Override
+    public UserViewModel getUserByUsername(String username) {
 
-            UserRoleEntity userRole = new UserRoleEntity();
-            userRole.setRole(UserRoleEnum.USER);
-
-            userRoleRepository.saveAll(List.of(adminRole, userRole));
-        }
+        return modelMapper.map(userRepository.findByUsername(username).get(), UserViewModel.class);
     }
 }

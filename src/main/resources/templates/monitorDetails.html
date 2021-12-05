@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="/fragments/common :: head"></head>
 <body>
@@ -10,30 +9,29 @@
 
     <!-- Portfolio Item Heading -->
     <h1 class="my-4 text-center" th:text="*{model}">Page Heading
-      <small>Secondary Text</small>
+        <small>Secondary Text</small>
     </h1>
-  
+
     <!-- Portfolio Item Row -->
     <div class="row">
-  
-      <div class="col-md-6">
-        <img class="img-fluid" th:src="*{picture.url}" alt="" height="750" width="550">
-      </div>
-  
-      <div class="col-md-4">
-        <h3 class="my-3">Monitor Description</h3>
-        <p th:text="*{description}"></p>
-        <h3 class="my-3">Monitor Details</h3>
-        <ul>
-          <li th:text="*{screen}">Lorem Ipsum</li>
-          <li th:text="|*{size} inches|">Dolor Sit Amet</li>
-          <li th:text="*{color}">Consectetur</li>
-          <li th:each="connection : ${monitor.connectionType}" th:text="${connection}">Adipiscing Elit</li>
-        </ul>
-          <button type="button" class="btn btn-info">Buy</button>
-      </div>
-  
+
+        <div class="col-md-6">
+            <img class="img-fluid" th:src="*{picture.url}" alt="" height="750" width="550">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Monitor Description</h3>
+            <p th:text="*{description}"></p>
+            <h3 class="my-3">Monitor Details</h3>
+            <ul>
+                <li th:text="*{screen}">Lorem Ipsum</li>
+                <li th:text="|*{size} inches|">Dolor Sit Amet</li>
+                <li th:text="*{color}">Consectetur</li>
+            </ul>
+            <button type="button" class="btn btn-info">Buy</button>
+        </div>
+
     </div>
-  
-  </div>
-  </body>
+
+</div>
+</body>

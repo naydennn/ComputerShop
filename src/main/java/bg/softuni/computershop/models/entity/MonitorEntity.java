@@ -1,10 +1,9 @@
 package bg.softuni.computershop.models.entity;
 
-import bg.softuni.computershop.models.enums.ConnectionTypeEnum;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "monitors")
@@ -14,15 +13,15 @@ public class MonitorEntity extends BaseEntity {
     private String screen;
     private Double size;
     private String color;
-    private List<ConnectionTypeEnum> connectionType;
     private Double price;
     private String description;
     private LocalDate created;
-    private UserEntity user;
     private PictureEntity picture;
+    private Set<UserEntity> users;
 
     public MonitorEntity() {
     }
+
     @Column(nullable = false)
     public String getModel() {
         return model;
@@ -83,16 +82,6 @@ public class MonitorEntity extends BaseEntity {
         return this;
     }
 
-    @ManyToOne
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public MonitorEntity setUser(UserEntity user) {
-        this.user = user;
-        return this;
-    }
-
     @OneToOne(cascade = CascadeType.ALL)
     public PictureEntity getPicture() {
         return picture;
@@ -103,18 +92,6 @@ public class MonitorEntity extends BaseEntity {
         return this;
     }
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "connections_types", joinColumns = @JoinColumn(name = "monitor_id"))
-    @Enumerated(EnumType.STRING)
-    public List<ConnectionTypeEnum> getConnectionType() {
-        return connectionType;
-    }
-
-    public MonitorEntity setConnectionType(List<ConnectionTypeEnum> connectionType) {
-        this.connectionType = connectionType;
-        return this;
-    }
-
     @Column(nullable = false)
     public String getColor() {
         return color;
@@ -122,6 +99,16 @@ public class MonitorEntity extends BaseEntity {
 
     public MonitorEntity setColor(String color) {
         this.color = color;
+        return this;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    public Set<UserEntity> getUsers() {
+        return users;
+    }
+
+    public MonitorEntity setUsers(Set<UserEntity> users) {
+        this.users = users;
         return this;
     }
 }

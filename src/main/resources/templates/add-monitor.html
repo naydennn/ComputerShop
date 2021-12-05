@@ -130,17 +130,6 @@
                         Picture is required</small>
                 </div>
             </div>
-            <div class="col">
-                <tr th:each="connection : ${connections}">
-                    <td>
-                        <label th:text="${connection}">Ex name</label>
-                        <input type="checkbox" name="connections"
-                               th:value="${connection}"
-                        />
-                        <br/>
-                    </td>
-                </tr>
-            </div>
         </div>
         <hr>
         <div class="row">

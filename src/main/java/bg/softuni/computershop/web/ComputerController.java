@@ -48,7 +48,7 @@ public class ComputerController {
     public String showComputerDetail(@PathVariable Long id,
                                      Model model){
 
-        model.addAttribute("computer", computerService.getComputerById(id));
+        model.addAttribute("computer", computerService.getComputerDetailById(id));
 
         return "computerDetails";
     }
@@ -56,10 +56,8 @@ public class ComputerController {
     @GetMapping("/buy/{id}/computer")
     public String buyComputer(@PathVariable Long id,
                               Principal principal) {
-
         computerService.buyComputer(id, principal.getName());
-
-        return "computers";
+        return "redirect:/profile";
     }
 
     @PostMapping("/add/computer")
