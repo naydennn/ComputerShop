@@ -18,7 +18,7 @@
         </div>
 
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form th:action="@{/users/register}" th:method="post" th:object="${userModel}">
+            <form th:action="@{/users/register}" th:method="post" th:object="${userModel}" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-group col-lg-6 mb-4">
                         <input id="username"
@@ -95,27 +95,38 @@
                                placeholder="Confirm Password"
                                class="form-control bg-white border-left-0 border-md h-100">
                         <p class="invalid-feedback alert-danger px-2 h-20">Confirm password is required</p>
-
                     </div>
-
                     <div class="row">
-                        <div class="col col-md-4">
-                            <div class="button-holder d-flex">
-                                <input type="submit" class="btn btn-info btn-lg" value="Create account"/>
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="form-group">
+                                <label for="picture">Profile picture</label>
+                                <input type="file"
+                                       name="picture"
+                                       class="form-control-file"
+                                       id="picture">
+                                <small class="invalid-feedback alert-danger px-2 h-20">
+                                    Picture is required</small>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-                    <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered? <a th:href="@{/users/login}"
-                                                                                      class="text-primary ml-2">Login</a>
-                        </p>
-                    </div>
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <div class="button-holder d-flex">
+                                    <input type="submit" class="btn btn-info btn-lg" value="Create account"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                            <div class="border-bottom w-100 ml-5"></div>
+                            <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                            <div class="border-bottom w-100 mr-5"></div>
+                        </div>
+                        <div class="text-center w-100">
+                            <p class="text-muted font-weight-bold">Already Registered? <a th:href="@{/users/login}"
+                                                                                          class="text-primary ml-2">Login</a>
+                            </p>
+                        </div>
 
+                    </div>
                 </div>
             </form>
         </div>

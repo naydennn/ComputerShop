@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class MonitorDetailsViewModel {
 
+    private Long id;
     private String model;
     private String screen;
     private Double size;
@@ -98,6 +99,15 @@ public class MonitorDetailsViewModel {
 
     public MonitorDetailsViewModel setPicture(PictureEntity picture) {
         this.picture = picture;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public MonitorDetailsViewModel setId(Long id) {
+        this.id = id;
         return this;
     }
 }

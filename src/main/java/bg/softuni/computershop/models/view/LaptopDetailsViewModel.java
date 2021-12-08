@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class LaptopDetailsViewModel {
 
+    private Long id;
     private String model;
     private ProcessorEntity processor;
     private VideoCardEntity videoCard;
@@ -138,6 +139,15 @@ public class LaptopDetailsViewModel {
 
     public LaptopDetailsViewModel setPicture(PictureEntity picture) {
         this.picture = picture;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LaptopDetailsViewModel setId(Long id) {
+        this.id = id;
         return this;
     }
 }

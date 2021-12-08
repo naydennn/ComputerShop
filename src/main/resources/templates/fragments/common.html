@@ -33,15 +33,15 @@
                 <li class="nav-item" sec:authorize="isAnonymous()">
                     <a class="nav-link" th:href="@{/users/register}">Register</a>
                 </li>
-                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                <li class="nav-item" >
                     <a class="nav-link" th:href="@{/about}">About</a>
                 </li>
-                <li class="dropdown" sec:authorize="isAuthenticated()">
+                <li class="dropdown" sec:authorize="isAuthenticated() && hasRole('ADMIN')"  >
                     <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Admin
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
                         <a class="dropdown-item" th:href="@{/add/laptop}">Add Laptop</a>
                         <a class="dropdown-item" th:href="@{/add/computer}">Add Computer</a>
                         <a class="dropdown-item" th:href="@{/add/monitor}">Add Monitor</a>

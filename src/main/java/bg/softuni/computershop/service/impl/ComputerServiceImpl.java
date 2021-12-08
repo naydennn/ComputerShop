@@ -59,9 +59,12 @@ public class ComputerServiceImpl implements ComputerService {
         UserEntity userEntity = userService.findByUsername(username);
         ComputerEntity computerEntity = computerRepository.findById(id).get();
 
-        computerEntity.setUsers(Set.of(userEntity));
+        if (userService.setMoney(userEntity, computerEntity.getPrice())) {
 
-        computerRepository.save(computerEntity);
+            computerEntity.setUsers(Set.of(userEntity));
+            computerRepository.save(computerEntity);
+        }
+
 
     }
     @Override

@@ -35,7 +35,12 @@
             <li th:text="|Type: *{type} |">Consectetur</li>
             <li th:text="|Price: *{price}|">Consectetur</li>
         </ul>
-          <button type="button" class="btn btn-info">Buy</button>
+          <a type="button" th:href="@{/buy/{id}/computer(id=*{id})}" class="btn btn-info">Buy</a>
+          <div sec:authorize="hasRole('ADMIN')">
+              <form th:action="@{/delete/{id}/laptop(id=*{id})}" th:method="delete">
+                  <input type="submit" class="btn btn-danger" value="Delete"/>
+              </form>
+          </div>
       </div>
   
     </div>

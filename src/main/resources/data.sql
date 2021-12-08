@@ -1,22 +1,5 @@
 Use computer_shop;
 
-INSERT INTO roles (id, role)
-VALUES (1, 'ADMIN');
-INSERT INTO roles (id, role)
-VALUES (2, 'MODERATOR');
-INSERT INTO roles (id, role)
-VALUES (3, 'USER');
-
-INSERT INTO users (id, email, first_name, last_name, money, password, phone_number, username)
-VALUES (1, 'na44kata@gmail.com', 'Naiden', 'Naidenov',  10000, '175436173b0815a1780d0e8abaf900c612dd78641b1bff578a5fc1546e9534ef2080c8bec2cf100d', '0888293829', 'Naiden99');
-
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
-VALUES (1, 1);
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
-VALUES (1, 2);
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
-VALUES (1, 3);
-
 INSERT INTO pictures (`id`, `public_id`, `url`)
 VALUES (1, 'qguxnq0n1ayhwykfcyt0', 'http://res.cloudinary.com/naydennn/image/upload/v1638126940/qguxnq0n1ayhwykfcyt0.png');
 INSERT INTO pictures (`id`, `public_id`, `url`)
@@ -59,8 +42,27 @@ INSERT INTO pictures (`id`, `public_id`, `url`)
 VALUES (20, 'pro-display-og-apple_gipn9a', 'https://res.cloudinary.com/naydennn/image/upload/v1638303190/pro-display-og-apple_gipn9a.jpg');
 INSERT INTO pictures (`id`, `public_id`, `url`)
 VALUES (21, 'aoc-24v2q_pqkuwi', 'https://res.cloudinary.com/naydennn/image/upload/v1638303191/aoc-24v2q_pqkuwi.jpg');
+INSERT INTO pictures (`id`, `public_id`, `url`)
+VALUES (22, 'profile-picture_vfqrav', 'https://res.cloudinary.com/naydennn/image/upload/v1638766479/profile-picture_vfqrav.png');
 
 
+INSERT INTO users (id, email, first_name, last_name, money, password, phone_number, username, picture_id)
+VALUES (1, 'na44kata@gmail.com', 'Naiden', 'Naidenov',  10000, '175436173b0815a1780d0e8abaf900c612dd78641b1bff578a5fc1546e9534ef2080c8bec2cf100d', '0888293829', 'Naiden99', 22);
+
+INSERT INTO roles (id, role)
+VALUES (1, 'ADMIN');
+INSERT INTO roles (id, role)
+VALUES (2, 'MODERATOR');
+INSERT INTO roles (id, role)
+VALUES (3, 'USER');
+
+INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+VALUES (1, 2);
+INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+VALUES (1, 3);
+
+INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+VALUES (1, 1);
 
 INSERT INTO processor (`id`, `cores`, `frequency`, `model`)
 VALUES (1, 8, 4.60, 'AMD Ryzen 7 PRO');

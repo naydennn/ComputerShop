@@ -57,7 +57,6 @@ public class ComputerBindingModel {
     private LocalDate created;
     @NotNull
     private DeviceTypeEnum type;
-    @NotNull
     private MultipartFile picture;
 
     public ComputerBindingModel() {

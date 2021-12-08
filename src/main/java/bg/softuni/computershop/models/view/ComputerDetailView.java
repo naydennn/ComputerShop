@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class ComputerDetailView {
 
+    private Long id;
     private String model;
     private ProcessorEntity processor;
     private VideoCardEntity videoCard;
@@ -138,6 +139,15 @@ public class ComputerDetailView {
 
     public ComputerDetailView setUser(UserEntity user) {
         this.user = user;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public ComputerDetailView setId(Long id) {
+        this.id = id;
         return this;
     }
 }

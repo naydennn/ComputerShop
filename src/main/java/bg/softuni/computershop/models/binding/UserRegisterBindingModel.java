@@ -1,5 +1,7 @@
 package bg.softuni.computershop.models.binding;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -15,6 +17,7 @@ public class UserRegisterBindingModel {
     private String password;
     private Double money;
     private String confirmPassword;
+    private MultipartFile picture;
 
     @NotNull
     @Size(min = 2, max = 20)
@@ -97,6 +100,16 @@ public class UserRegisterBindingModel {
 
     public UserRegisterBindingModel setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+        return this;
+    }
+
+    @NotNull
+    public MultipartFile getPicture() {
+        return picture;
+    }
+
+    public UserRegisterBindingModel setPicture(MultipartFile picture) {
+        this.picture = picture;
         return this;
     }
 }

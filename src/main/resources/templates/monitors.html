@@ -27,12 +27,11 @@
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
-                            <p class="fw-bolder" th:text="|*{model} , *{size}, *{screen}|">HP - Pavilion 17-cd1001nu, 17.3",core i7, 144Hz, gray</p>
+                            <p class="fw-bolder" th:text="|*{model} , *{size}, *{screen}|">HP - Pavilion 17-cd1001nu,
+                                17.3",core i7, 144Hz, gray</p>
                             <p th:text="|Price: *{price}|">Price: 1200$</p>
                             <a type="button" th:href="@{/buy/{id}/monitor(id=*{id})}" class="btn btn-info">Buy</a>
                             <a type="button" th:href="@{/monitor/{id}/details(id=*{id})}" class="btn btn-primary">Details</a>
-                            <form th:action="@{/delete/{id}/monitor(id=*{id})}" th:method="delete">
-                                <input type="submit" class="btn btn-danger" value="Delete"/>                             </form>
                         </div>
                     </div>
                 </div>

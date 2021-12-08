@@ -11,4 +11,8 @@ public interface UserService {
     UserEntity findByUsername(String username);
 
     UserViewModel getUserByUsername(String username);
+
+    boolean setMoney(UserEntity userEntity, Double price);
+
+    void addMoney(Double money, String username);
 }

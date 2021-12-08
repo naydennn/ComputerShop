@@ -10,6 +10,7 @@ import java.time.LocalDate;
 
 public class ComputerServiceModel {
 
+    private Long id;
     private String model;
     private ProcessorEntity processor;
     private VideoCardEntity videoCard;
@@ -131,6 +132,15 @@ public class ComputerServiceModel {
 
     public ComputerServiceModel setPicture(MultipartFile picture) {
         this.picture = picture;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public ComputerServiceModel setId(Long id) {
+        this.id = id;
         return this;
     }
 }

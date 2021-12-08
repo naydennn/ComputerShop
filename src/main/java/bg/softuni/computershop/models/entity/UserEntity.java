@@ -17,6 +17,7 @@ public class UserEntity extends BaseEntity {
     private String phoneNumber;
     private String password;
     private Double money;
+    private PictureEntity picture;
     private Set<UserRoleEntity> roles = new HashSet<>();
     private Set<LaptopEntity> laptops;
     private Set<ComputerEntity> computers;
@@ -131,6 +132,16 @@ public class UserEntity extends BaseEntity {
 
     public UserEntity setMonitors(Set<MonitorEntity> monitors) {
         this.monitors = monitors;
+        return this;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public PictureEntity getPicture() {
+        return picture;
+    }
+
+    public UserEntity setPicture(PictureEntity picture) {
+        this.picture = picture;
         return this;
     }
 }

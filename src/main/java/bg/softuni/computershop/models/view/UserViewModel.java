@@ -1,9 +1,6 @@
 package bg.softuni.computershop.models.view;
 
-import bg.softuni.computershop.models.entity.ComputerEntity;
-import bg.softuni.computershop.models.entity.LaptopEntity;
-import bg.softuni.computershop.models.entity.MonitorEntity;
-import bg.softuni.computershop.models.entity.UserRoleEntity;
+import bg.softuni.computershop.models.entity.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +14,7 @@ public class UserViewModel {
     private String phoneNumber;
     private String password;
     private Double money;
+    private PictureEntity picture;
     private Set<UserRoleEntity> roles = new HashSet<>();
     private Set<LaptopEntity> laptops;
     private Set<ComputerEntity> computers;
@@ -121,6 +119,15 @@ public class UserViewModel {
 
     public UserViewModel setMonitors(Set<MonitorEntity> monitors) {
         this.monitors = monitors;
+        return this;
+    }
+
+    public PictureEntity getPicture() {
+        return picture;
+    }
+
+    public UserViewModel setPicture(PictureEntity picture) {
+        this.picture = picture;
         return this;
     }
 }

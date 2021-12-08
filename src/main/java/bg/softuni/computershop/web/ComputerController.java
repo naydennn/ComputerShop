@@ -2,6 +2,7 @@ package bg.softuni.computershop.web;
 
 import bg.softuni.computershop.models.binding.ComputerBindingModel;
 import bg.softuni.computershop.models.service.ComputerServiceModel;
+import bg.softuni.computershop.models.view.ComputerDetailView;
 import bg.softuni.computershop.models.view.ComputerViewModel;
 import bg.softuni.computershop.service.ComputerService;
 import org.modelmapper.ModelMapper;
@@ -35,7 +36,7 @@ public class ComputerController {
     @GetMapping("/computers")
     public String allComputers(Model model) {
         List<ComputerViewModel> computers = computerService.getAllComputers();
-        model.addAttribute("computers" , computers);
+        model.addAttribute("computers", computers);
         return "computers";
     }
 
@@ -46,7 +47,7 @@ public class ComputerController {
 
     @GetMapping("/computer/{id}/details")
     public String showComputerDetail(@PathVariable Long id,
-                                     Model model){
+                                     Model model) {
 
         model.addAttribute("computer", computerService.getComputerDetailById(id));
 
@@ -63,7 +64,7 @@ public class ComputerController {
     @PostMapping("/add/computer")
     public String addComputerForm(@Valid ComputerBindingModel computerBindingModel,
                                   BindingResult bindingResult,
-                                  RedirectAttributes redirectAttributes)  {
+                                  RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("computerBindingModel", computerBindingModel);
@@ -79,12 +80,11 @@ public class ComputerController {
             e.printStackTrace();
         }
 
-
         return "redirect:/";
     }
 
     @DeleteMapping("/delete/{id}/computer")
-    public String deleteComputer(@PathVariable Long id){
+    public String deleteComputer(@PathVariable Long id) {
 
         computerService.deleteComputer(id);
 

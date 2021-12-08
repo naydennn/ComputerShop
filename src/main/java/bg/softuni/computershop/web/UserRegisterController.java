@@ -37,10 +37,12 @@ public class UserRegisterController {
 
     @PostMapping("/users/register")
     public String register(@Valid UserRegisterBindingModel userModel,
-                               BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes){
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors() || !userModel.getPassword().equals(userModel.getConfirmPassword())) {
+        if (userModel.getPicture().getSize() == 0
+                || bindingResult.hasErrors()
+                || !userModel.getPassword().equals(userModel.getConfirmPassword())) {
 
             redirectAttributes.addFlashAttribute("userModel", userModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel",

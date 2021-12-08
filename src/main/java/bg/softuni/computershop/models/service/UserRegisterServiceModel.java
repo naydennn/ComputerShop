@@ -1,5 +1,7 @@
 package bg.softuni.computershop.models.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserRegisterServiceModel {
 
     private String username;
@@ -9,6 +11,7 @@ public class UserRegisterServiceModel {
     private String phoneNumber;
     private String password;
     private Double money;
+    private MultipartFile picture;
 
     public UserRegisterServiceModel() {
     }
@@ -73,6 +76,15 @@ public class UserRegisterServiceModel {
 
     public UserRegisterServiceModel setMoney(Double money) {
         this.money = money;
+        return this;
+    }
+
+    public MultipartFile getPicture() {
+        return picture;
+    }
+
+    public UserRegisterServiceModel setPicture(MultipartFile picture) {
+        this.picture = picture;
         return this;
     }
 }
