@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/users.css">
+    <script src="/js/usersLoad.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <title>Computer Shop</title>
+</head>
+<body>
+<header th:replace="fragments/common :: navbar"></header>
+
+<button id="loadBooks">LOAD ALL BOOKS</button>
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Money</th>
+    </tr>
+    </thead>
+    <tbody id="authors-container"></tbody>
+</table>
+
+
+<footer th:replace="fragments/common :: footer" class="text-center text-white"
+        style="background-color: #17385a;"></footer>
+
+</body>
+</html>

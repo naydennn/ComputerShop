@@ -11,6 +11,7 @@ import bg.softuni.computershop.repository.LaptopRepository;
 import bg.softuni.computershop.service.CloudinaryService;
 import bg.softuni.computershop.service.LaptopService;
 import bg.softuni.computershop.service.UserService;
+import bg.softuni.computershop.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -57,7 +58,7 @@ public class LaptopServiceImpl implements LaptopService {
     @Override
     public LaptopDetailsViewModel getLaptopById(Long id) {
 
-        LaptopEntity laptopEntity = laptopRepository.findById(id).get();
+        LaptopEntity laptopEntity = laptopRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
         return modelMapper.map(laptopEntity, LaptopDetailsViewModel.class);
     }
@@ -66,7 +67,7 @@ public class LaptopServiceImpl implements LaptopService {
     public void buyLaptop(Long id, String username) {
         UserEntity userEntity = userService.findByUsername(username);
 
-        LaptopEntity laptopEntity = laptopRepository.findById(id).get();
+        LaptopEntity laptopEntity = laptopRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
         laptopEntity.setUsers(Set.of(userEntity));
 

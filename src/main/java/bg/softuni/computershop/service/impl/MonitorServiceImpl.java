@@ -11,6 +11,7 @@ import bg.softuni.computershop.repository.MonitorRepository;
 import bg.softuni.computershop.service.CloudinaryService;
 import bg.softuni.computershop.service.MonitorService;
 import bg.softuni.computershop.service.UserService;
+import bg.softuni.computershop.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +57,7 @@ public class MonitorServiceImpl implements MonitorService {
     @Override
     public MonitorDetailsViewModel getMonitorDetailById(Long id) {
 
-        MonitorEntity monitorEntity = monitorRepository.findById(id).get();
+        MonitorEntity monitorEntity = monitorRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
         return modelMapper.map(monitorEntity, MonitorDetailsViewModel.class);
     }
@@ -71,7 +72,7 @@ public class MonitorServiceImpl implements MonitorService {
     public void buyMonitor(Long id, String username) {
         UserEntity userEntity = userService.findByUsername(username);
 
-        MonitorEntity monitorEntity = monitorRepository.findById(id).get();
+        MonitorEntity monitorEntity = monitorRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
         monitorEntity.setUsers(Set.of(userEntity));
 

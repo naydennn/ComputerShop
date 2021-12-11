@@ -6,6 +6,7 @@ import bg.softuni.computershop.models.view.ComputerDetailView;
 import bg.softuni.computershop.models.view.ComputerViewModel;
 import bg.softuni.computershop.repository.ComputerRepository;
 import bg.softuni.computershop.service.*;
+import bg.softuni.computershop.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +50,8 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public ComputerDetailView getComputerDetailById(Long id) {
-        ComputerEntity computerEntity = computerRepository.findById(id).get();
+        ComputerEntity computerEntity = computerRepository.findById(id)
+                .orElseThrow(() ->new ObjectNotFoundException(id));
 
         return modelMapper.map(computerEntity, ComputerDetailView.class);
     }

@@ -3,6 +3,7 @@ package bg.softuni.computershop.service.impl;
 import bg.softuni.computershop.models.entity.*;
 import bg.softuni.computershop.models.enums.UserRoleEnum;
 import bg.softuni.computershop.models.service.UserRegisterServiceModel;
+import bg.softuni.computershop.models.service.UserServiceAdminModel;
 import bg.softuni.computershop.models.view.UserViewModel;
 import bg.softuni.computershop.repository.UserRepository;
 import bg.softuni.computershop.repository.UserRoleRepository;
@@ -13,7 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -84,5 +87,12 @@ public class UserServiceImpl implements UserService {
         userEntity.setMoney(userEntity.getMoney() + money);
 
         userRepository.save(userEntity);
+    }
+
+    @Override
+    public List<UserServiceAdminModel> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(user -> modelMapper.map(user, UserServiceAdminModel.class))
+                .collect(Collectors.toList());
     }
 }
