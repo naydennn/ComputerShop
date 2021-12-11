@@ -69,9 +69,12 @@ public class LaptopServiceImpl implements LaptopService {
 
         LaptopEntity laptopEntity = laptopRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
-        laptopEntity.setUsers(Set.of(userEntity));
 
-        laptopRepository.save(laptopEntity);
+        if (userService.setMoney(userEntity, laptopEntity.getPrice())) {
+            laptopEntity.setUsers(Set.of(userEntity));
+            laptopRepository.save(laptopEntity);
+        }
+
     }
 
     @Override

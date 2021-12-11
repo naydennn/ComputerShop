@@ -74,9 +74,13 @@ public class MonitorServiceImpl implements MonitorService {
 
         MonitorEntity monitorEntity = monitorRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
-        monitorEntity.setUsers(Set.of(userEntity));
 
-        monitorRepository.save(monitorEntity);
+        if (userService.setMoney(userEntity, monitorEntity.getPrice())) {
+
+            monitorEntity.setUsers(Set.of(userEntity));
+            monitorRepository.save(monitorEntity);
+        }
+
     }
 
 }
