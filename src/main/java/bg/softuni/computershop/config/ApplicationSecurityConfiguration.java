@@ -28,6 +28,10 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/", "/users/login", "/users/register", "/about").permitAll()
                 .antMatchers("/statistics").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/add/computer").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/add/laptop").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/add/monitor").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/users-info").hasRole(UserRoleEnum.ADMIN.name())
                 .antMatchers("/**").authenticated().
                 and()
                 .formLogin()

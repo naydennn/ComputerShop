@@ -1,8 +1,10 @@
 package bg.softuni.computershop.service;
 
+import bg.softuni.computershop.models.binding.MonitorAddBindingModel;
 import bg.softuni.computershop.models.entity.MonitorEntity;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
 import bg.softuni.computershop.models.view.MonitorDetailsViewModel;
+import bg.softuni.computershop.models.view.MonitorEditViewModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
 
 import java.io.IOException;
@@ -19,4 +21,6 @@ public interface MonitorService {
     void deleteMonitor(Long id);
 
     void buyMonitor(Long id, String username);
+
+    MonitorAddBindingModel findById(Long id);
 }

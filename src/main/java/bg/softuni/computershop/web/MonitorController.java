@@ -2,6 +2,7 @@ package bg.softuni.computershop.web;
 
 import bg.softuni.computershop.models.binding.MonitorAddBindingModel;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
+import bg.softuni.computershop.models.view.MonitorEditViewModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.service.MonitorService;
 import org.modelmapper.ModelMapper;
@@ -62,6 +63,16 @@ public class MonitorController {
         monitorService.buyMonitor(id, principal.getName());
 
         return "redirect:/profile";
+    }
+
+
+    @GetMapping("/edit/{id}/monitor")
+    public String editOffer(@PathVariable Long id, Model model) {
+
+        MonitorAddBindingModel monitorAddBindingModel = monitorService.findById(id);
+
+        model.addAttribute("monitorAddBindingModel", monitorAddBindingModel);
+        return "add-monitor";
     }
 
 

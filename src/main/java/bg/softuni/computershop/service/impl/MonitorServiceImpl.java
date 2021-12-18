@@ -1,11 +1,13 @@
 package bg.softuni.computershop.service.impl;
 
+import bg.softuni.computershop.models.binding.MonitorAddBindingModel;
 import bg.softuni.computershop.models.entity.CloudinaryImage;
 import bg.softuni.computershop.models.entity.MonitorEntity;
 import bg.softuni.computershop.models.entity.PictureEntity;
 import bg.softuni.computershop.models.entity.UserEntity;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
 import bg.softuni.computershop.models.view.MonitorDetailsViewModel;
+import bg.softuni.computershop.models.view.MonitorEditViewModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.repository.MonitorRepository;
 import bg.softuni.computershop.service.CloudinaryService;
@@ -13,8 +15,13 @@ import bg.softuni.computershop.service.MonitorService;
 import bg.softuni.computershop.service.UserService;
 import bg.softuni.computershop.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -81,6 +88,22 @@ public class MonitorServiceImpl implements MonitorService {
             monitorRepository.save(monitorEntity);
         }
 
+    }
+
+    @Override
+    public MonitorAddBindingModel findById(Long id) {
+
+        MonitorEntity monitorEntity = monitorRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+
+        try {
+            MultipartFile multipartFile = new MockMultipartFile("picture.xlsx", new FileInputStream(new File("/home/admin/test.xlsx")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        monitorEntity.setPicture()
+
+        return modelMapper.map(monitorEntity, MonitorAddBindingModel.class);
     }
 
 }
