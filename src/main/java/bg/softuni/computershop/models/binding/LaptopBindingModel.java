@@ -13,10 +13,10 @@ import java.time.LocalDate;
 
 public class LaptopBindingModel {
 
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 50)
     @NotNull
     private String model;
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 50)
     @NotNull
     private String processorModel;
     @NotNull
@@ -26,13 +26,13 @@ public class LaptopBindingModel {
     @Positive
     private Double processorFrequency;
     @NotNull
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 50)
     private String videoCardGpu;
     @NotNull
     @Positive
     private Integer videoCardMemory;
     @NotNull
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 50)
     private String videoCardTypeOfMemory;
     @NotNull
     @Positive

@@ -1,13 +1,12 @@
 package bg.softuni.computershop.service.impl;
 
-import bg.softuni.computershop.models.binding.MonitorAddBindingModel;
+import bg.softuni.computershop.models.binding.MonitorEditModel;
 import bg.softuni.computershop.models.entity.CloudinaryImage;
 import bg.softuni.computershop.models.entity.MonitorEntity;
 import bg.softuni.computershop.models.entity.PictureEntity;
 import bg.softuni.computershop.models.entity.UserEntity;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
 import bg.softuni.computershop.models.view.MonitorDetailsViewModel;
-import bg.softuni.computershop.models.view.MonitorEditViewModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.repository.MonitorRepository;
 import bg.softuni.computershop.service.CloudinaryService;
@@ -15,13 +14,8 @@ import bg.softuni.computershop.service.MonitorService;
 import bg.softuni.computershop.service.UserService;
 import bg.softuni.computershop.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -91,19 +85,24 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public MonitorAddBindingModel findById(Long id) {
+    public MonitorViewModel findById(Long id) {
 
         MonitorEntity monitorEntity = monitorRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
-        try {
-            MultipartFile multipartFile = new MockMultipartFile("picture.xlsx", new FileInputStream(new File("/home/admin/test.xlsx")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return modelMapper.map(monitorEntity, MonitorViewModel.class);
+    }
 
-        monitorEntity.setPicture()
+    @Override
+    public void updateMonitor(Long id, MonitorEditModel monitorEditModel) {
+        MonitorEntity monitorEntity = monitorRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
-        return modelMapper.map(monitorEntity, MonitorAddBindingModel.class);
+        monitorEntity.setColor(monitorEditModel.getColor());
+        monitorEntity.setPrice(monitorEditModel.getPrice());
+        monitorEntity.setModel(monitorEditModel.getModel());
+        monitorEntity.setScreen(monitorEditModel.getScreen());
+        monitorEntity.setSize(monitorEditModel.getSize());
+
+        monitorRepository.save(monitorEntity);
     }
 
 }

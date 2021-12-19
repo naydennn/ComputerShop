@@ -1,8 +1,8 @@
 package bg.softuni.computershop.web;
 
 import bg.softuni.computershop.models.binding.MonitorAddBindingModel;
+import bg.softuni.computershop.models.binding.MonitorEditModel;
 import bg.softuni.computershop.models.service.MonitorServiceModel;
-import bg.softuni.computershop.models.view.MonitorEditViewModel;
 import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.service.MonitorService;
 import org.modelmapper.ModelMapper;
@@ -58,7 +58,7 @@ public class MonitorController {
 
     @GetMapping("/buy/{id}/monitor")
     public String buyMonitor(@PathVariable Long id,
-                             Principal principal){
+                             Principal principal) {
 
         monitorService.buyMonitor(id, principal.getName());
 
@@ -67,12 +67,30 @@ public class MonitorController {
 
 
     @GetMapping("/edit/{id}/monitor")
-    public String editOffer(@PathVariable Long id, Model model) {
+    public String edit(@PathVariable Long id, Model model) {
 
-        MonitorAddBindingModel monitorAddBindingModel = monitorService.findById(id);
+        MonitorViewModel monitorViewModel = monitorService.findById(id);
 
-        model.addAttribute("monitorAddBindingModel", monitorAddBindingModel);
-        return "add-monitor";
+        model.addAttribute("monitorViewModel", monitorViewModel);
+        return "edit-monitor";
+    }
+
+    @PatchMapping("/edit/{id}/monitor")
+    public String editMonitor(@PathVariable Long id,
+                              @Valid MonitorEditModel monitorEditModel,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("monitorEditModel", monitorEditModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.monitorEditModel", bindingResult);
+
+
+               return "redirect:/edit/" + id + "/monitor";
+        }
+
+        monitorService.updateMonitor(id, monitorEditModel);
+        return "redirect:/monitors";
     }
 
 
@@ -99,7 +117,7 @@ public class MonitorController {
     }
 
     @DeleteMapping("/delete/{id}/monitor")
-    public String deleteMonitor(@PathVariable Long id){
+    public String deleteMonitor(@PathVariable Long id) {
 
         monitorService.deleteMonitor(id);
 

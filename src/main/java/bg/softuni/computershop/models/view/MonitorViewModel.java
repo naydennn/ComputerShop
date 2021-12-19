@@ -7,6 +7,7 @@ public class MonitorViewModel {
     private String screen;
     private Double size;
     private Double price;
+    private String color;
     private String pictureUrl;
 
     public MonitorViewModel() {
@@ -63,6 +64,15 @@ public class MonitorViewModel {
 
     public MonitorViewModel setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public MonitorViewModel setColor(String color) {
+        this.color = color;
         return this;
     }
 }

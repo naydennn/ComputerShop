@@ -32,6 +32,12 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .antMatchers("/add/laptop").hasRole(UserRoleEnum.ADMIN.name())
                 .antMatchers("/add/monitor").hasRole(UserRoleEnum.ADMIN.name())
                 .antMatchers("/users-info").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/edit/{id}/computer").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/edit/{id}/monitor").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/edit/{id}/laptop").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/delete/{id}/laptop").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/delete/{id}/laptop").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/delete/{id}/laptop").hasRole(UserRoleEnum.ADMIN.name())
                 .antMatchers("/**").authenticated().
                 and()
                 .formLogin()

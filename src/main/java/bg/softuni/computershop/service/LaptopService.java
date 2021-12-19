@@ -1,5 +1,6 @@
 package bg.softuni.computershop.service;
 
+import bg.softuni.computershop.models.binding.LaptopEditModel;
 import bg.softuni.computershop.models.service.LaptopServiceModel;
 import bg.softuni.computershop.models.view.LaptopDetailsViewModel;
 import bg.softuni.computershop.models.view.LaptopViewModel;
@@ -18,4 +19,8 @@ public interface LaptopService {
     void buyLaptop(Long id, String username);
 
     void deleteLaptop(Long id);
+
+    LaptopViewModel findById(Long id);
+
+    void updateMonitor(Long id, LaptopEditModel laptopEditModel);
 }

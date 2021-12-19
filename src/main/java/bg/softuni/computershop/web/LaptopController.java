@@ -1,8 +1,11 @@
 package bg.softuni.computershop.web;
 
+import bg.softuni.computershop.models.binding.ComputerEditModel;
 import bg.softuni.computershop.models.binding.LaptopBindingModel;
+import bg.softuni.computershop.models.binding.LaptopEditModel;
 import bg.softuni.computershop.models.binding.UserRegisterBindingModel;
 import bg.softuni.computershop.models.service.LaptopServiceModel;
+import bg.softuni.computershop.models.view.ComputerViewModel;
 import bg.softuni.computershop.models.view.LaptopViewModel;
 import bg.softuni.computershop.service.LaptopService;
 import org.modelmapper.ModelMapper;
@@ -63,6 +66,34 @@ public class LaptopController {
         laptopService.buyLaptop(id, principal.getName());
 
         return "redirect:/profile";
+    }
+
+    @GetMapping("/edit/{id}/laptop")
+    public String edit(@PathVariable Long id, Model model) {
+
+        LaptopViewModel laptopViewModel = laptopService.findById(id);
+
+        model.addAttribute("laptopViewModel", laptopViewModel);
+        return "edit-laptop";
+    }
+
+    @PatchMapping("/edit/{id}/laptop")
+    public String editMonitor(@PathVariable Long id,
+                              @Valid LaptopEditModel laptopEditModel,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("laptopEditModel", laptopEditModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.laptopEditModel",
+                    bindingResult);
+
+
+            return "redirect:/edit/" + id + "/laptop";
+        }
+
+        laptopService.updateMonitor(id, laptopEditModel);
+        return "redirect:/laptops";
     }
 
     @PostMapping("/add/laptop")

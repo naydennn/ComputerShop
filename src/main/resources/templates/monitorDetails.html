@@ -30,8 +30,8 @@
                 <li th:text="*{color}">Consectetur</li>
             </ul>
             <a type="button" th:href="@{/buy/{id}/monitor(id=*{id})}" class="btn btn-info">Buy</a>
-            <a type="button" th:href="@{/edit/{id}/monitor(id=*{id})}" class="btn btn-success">Edit</a>
             <div sec:authorize="hasRole('ADMIN')">
+                <a type="button" th:href="@{/edit/{id}/monitor(id=*{id})}" class="btn btn-success">Edit</a>
                 <form th:action="@{/delete/{id}/monitor(id=*{id})}" th:method="delete">
                     <input type="submit" class="btn btn-danger" value="Delete"/>
                 </form>

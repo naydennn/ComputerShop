@@ -1,9 +1,11 @@
 package bg.softuni.computershop.service.impl;
 
+import bg.softuni.computershop.models.binding.ComputerEditModel;
 import bg.softuni.computershop.models.entity.*;
 import bg.softuni.computershop.models.service.ComputerServiceModel;
 import bg.softuni.computershop.models.view.ComputerDetailView;
 import bg.softuni.computershop.models.view.ComputerViewModel;
+import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.repository.ComputerRepository;
 import bg.softuni.computershop.service.*;
 import bg.softuni.computershop.service.exception.ObjectNotFoundException;
@@ -72,5 +74,28 @@ public class ComputerServiceImpl implements ComputerService {
     @Override
     public void deleteComputer(Long id) {
         computerRepository.deleteById(id);
+    }
+
+    @Override
+    public ComputerViewModel findById(Long id) {
+
+        ComputerEntity computerEntity = computerRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+
+        return modelMapper.map(computerEntity, ComputerViewModel.class);
+    }
+
+    @Override
+    public void updateMonitor(Long id, ComputerEditModel computerEditModel) {
+        ComputerEntity computerEntity = computerRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+
+        computerEntity.setPrice(computerEditModel.getPrice());
+        computerEntity.setStorage(computerEditModel.getStorage());
+        computerEntity.setStorage(computerEditModel.getStorage());
+        computerEntity.setModel(computerEditModel.getModel());
+        computerEntity.getRam().setRam(computerEditModel.getRam());
+        computerEntity.getRam().setTypeOfRam(computerEditModel.getTypeOfRam());
+        computerEntity.getProcessor().setModel(computerEditModel.getProcessorModel());
+
+        computerRepository.save(computerEntity);
     }
 }

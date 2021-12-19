@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="/fragments/common :: head"></head>
 
 <body>
 <header th:replace="fragments/common :: navbar"></header>
-<form th:method="post" th:action="@{/add/monitor}" th:object="${monitorAddBindingModel}" enctype="multipart/form-data">
+<form th:object="${monitorViewModel}" th:method="patch" th:action="@{/edit/{id}/monitor(id=*{id})}">
     <div class="container mt-5">
-        <h1 class="text-center"> Add Monitor !</h1>
+        <h1 class="text-center"> Edit Monitor !</h1>
         <hr>
         <div class="row">
             <div class="col">
@@ -102,45 +102,6 @@
             </div>
         </div>
         <!-- end of second row -->
-        <hr>
-        <div class="form-group row">
-            <div class="col">
-                <label for="created">Created date</label>
-                <input name="created"
-                       th:field="*{created}"
-                       th:errorclass="is-invalid"
-                       type="date"
-                       class="form-control"
-                       id="created"
-                       aria-describedby="createdHelpInline">
-                <small id="createdTimeHelpInline" class="invalid-feedback bg-danger text-light rounded">
-                    Created date cannot be in the future.
-                </small>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Picture</label>
-                    <input type="file"
-                           th:field="*{picture}"
-                           th:errorclass="is-invalid"
-                           name="picture"
-                           class="form-control-file"
-                           id="exampleFormControlFile1">
-                    <small class="invalid-feedback alert-danger px-2 h-20">
-                        Picture is required</small>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col">
-                <label for="description">Description</label>
-                <textarea id="description"
-                          name="description"
-                          cols="40" rows="4"
-                          class="form-control"></textarea>
-            </div>
-        </div>
         <hr>
         <div class="row">
             <div class="col text-center">

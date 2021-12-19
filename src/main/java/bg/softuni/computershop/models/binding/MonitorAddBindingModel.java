@@ -13,10 +13,10 @@ import java.time.LocalDate;
 public class MonitorAddBindingModel {
 
     @NotNull
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 50)
     private String model;
     @NotNull
-    @Size(min = 2, max = 10)
+    @Size(min = 2, max = 50)
     private String screen;
     @NotNull
     @Size(min = 2, max = 10)

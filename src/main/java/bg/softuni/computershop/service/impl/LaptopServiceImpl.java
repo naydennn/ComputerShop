@@ -1,5 +1,6 @@
 package bg.softuni.computershop.service.impl;
 
+import bg.softuni.computershop.models.binding.LaptopEditModel;
 import bg.softuni.computershop.models.entity.CloudinaryImage;
 import bg.softuni.computershop.models.entity.LaptopEntity;
 import bg.softuni.computershop.models.entity.PictureEntity;
@@ -80,5 +81,25 @@ public class LaptopServiceImpl implements LaptopService {
     @Override
     public void deleteLaptop(Long id) {
         laptopRepository.deleteById(id);
+    }
+
+    @Override
+    public LaptopViewModel findById(Long id) {
+
+        LaptopEntity laptopEntity = laptopRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+
+        return modelMapper.map(laptopEntity, LaptopViewModel.class);
+    }
+
+    @Override
+    public void updateMonitor(Long id, LaptopEditModel laptopEditModel) {
+        LaptopEntity laptopEntity = laptopRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+
+        laptopEntity.setModel(laptopEditModel.getModel());
+        laptopEntity.setColor(laptopEditModel.getColor());
+        laptopEntity.setPrice(laptopEditModel.getPrice());
+        laptopEntity.getRamEntity().setRam(laptopEditModel.getRam());
+
+        laptopRepository.save(laptopEntity);
     }
 }

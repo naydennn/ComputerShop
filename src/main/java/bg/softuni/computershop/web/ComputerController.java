@@ -1,9 +1,12 @@
 package bg.softuni.computershop.web;
 
 import bg.softuni.computershop.models.binding.ComputerBindingModel;
+import bg.softuni.computershop.models.binding.ComputerEditModel;
+import bg.softuni.computershop.models.binding.MonitorEditModel;
 import bg.softuni.computershop.models.service.ComputerServiceModel;
 import bg.softuni.computershop.models.view.ComputerDetailView;
 import bg.softuni.computershop.models.view.ComputerViewModel;
+import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.service.ComputerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -59,6 +62,33 @@ public class ComputerController {
                               Principal principal) {
         computerService.buyComputer(id, principal.getName());
         return "redirect:/profile";
+    }
+
+    @GetMapping("/edit/{id}/computer")
+    public String edit(@PathVariable Long id, Model model) {
+
+        ComputerViewModel computerViewModel = computerService.findById(id);
+
+        model.addAttribute("computerViewModel", computerViewModel);
+        return "edit-computer";
+    }
+
+    @PatchMapping("/edit/{id}/computer")
+    public String editMonitor(@PathVariable Long id,
+                              @Valid ComputerEditModel computerEditModel,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("computerEditModel", computerEditModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.computerEditModel", bindingResult);
+
+
+            return "redirect:/edit/" + id + "/computer";
+        }
+
+        computerService.updateMonitor(id, computerEditModel);
+        return "redirect:/computers";
     }
 
     @PostMapping("/add/computer")
