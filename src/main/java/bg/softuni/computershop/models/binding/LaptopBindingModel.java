@@ -2,6 +2,7 @@ package bg.softuni.computershop.models.binding;
 
 import bg.softuni.computershop.models.entity.UserEntity;
 import bg.softuni.computershop.models.enums.DeviceTypeEnum;
+import bg.softuni.computershop.models.validator.PictureValidation;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,7 +60,7 @@ public class LaptopBindingModel {
     @NotNull
     private DeviceTypeEnum type;
     private UserEntity user;
-    @NotNull
+    @PictureValidation
     private MultipartFile picture;
 
     public LaptopBindingModel() {

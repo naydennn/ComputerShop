@@ -1,6 +1,7 @@
 package bg.softuni.computershop.models.binding;
 
 import bg.softuni.computershop.models.enums.DeviceTypeEnum;
+import bg.softuni.computershop.models.validator.PictureValidation;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -57,6 +58,7 @@ public class ComputerBindingModel {
     private LocalDate created;
     @NotNull
     private DeviceTypeEnum type;
+    @PictureValidation
     private MultipartFile picture;
 
     public ComputerBindingModel() {

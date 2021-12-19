@@ -1,6 +1,7 @@
 package bg.softuni.computershop.models.binding;
 
 import bg.softuni.computershop.models.entity.UserEntity;
+import bg.softuni.computershop.models.validator.PictureValidation;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,7 +34,7 @@ public class MonitorAddBindingModel {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate created;
     private UserEntity user;
-    @NotNull
+    @PictureValidation
     private MultipartFile picture;
 
     public MonitorAddBindingModel() {

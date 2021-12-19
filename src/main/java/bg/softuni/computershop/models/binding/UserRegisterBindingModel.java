@@ -1,11 +1,9 @@
 package bg.softuni.computershop.models.binding;
 
+import bg.softuni.computershop.models.validator.PictureValidation;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class UserRegisterBindingModel {
 
@@ -53,7 +51,7 @@ public class UserRegisterBindingModel {
     }
 
     @Email
-    @NotNull
+    @NotEmpty
     public String getEmail() {
         return email;
     }
@@ -103,7 +101,7 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @NotNull
+    @PictureValidation
     public MultipartFile getPicture() {
         return picture;
     }

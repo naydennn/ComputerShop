@@ -43,7 +43,6 @@ public class UserRegisterController {
         if (userModel.getPicture().getSize() == 0
                 || bindingResult.hasErrors()
                 || !userModel.getPassword().equals(userModel.getConfirmPassword())) {
-
             redirectAttributes.addFlashAttribute("userModel", userModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel",
                     bindingResult);
