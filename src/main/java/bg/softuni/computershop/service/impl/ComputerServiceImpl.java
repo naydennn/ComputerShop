@@ -5,7 +5,6 @@ import bg.softuni.computershop.models.entity.*;
 import bg.softuni.computershop.models.service.ComputerServiceModel;
 import bg.softuni.computershop.models.view.ComputerDetailView;
 import bg.softuni.computershop.models.view.ComputerViewModel;
-import bg.softuni.computershop.models.view.MonitorViewModel;
 import bg.softuni.computershop.repository.ComputerRepository;
 import bg.softuni.computershop.service.*;
 import bg.softuni.computershop.service.exception.ObjectNotFoundException;
@@ -61,7 +60,7 @@ public class ComputerServiceImpl implements ComputerService {
     @Override
     public void buyComputer(Long id, String username) {
         UserEntity userEntity = userService.findByUsername(username);
-        ComputerEntity computerEntity = computerRepository.findById(id).get();
+        ComputerEntity computerEntity = computerRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 
         if (userService.setMoney(userEntity, computerEntity.getPrice())) {
 
